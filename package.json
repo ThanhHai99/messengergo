@@ -1,0 +1,24 @@
+{
+  "name": "nodejs_messenger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThanhHai99/NodeJS_Messenger.git"
+  },
+  "author": "thanh hai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThanhHai99/NodeJS_Messenger/issues"
+  },
+  "homepage": "https://github.com/ThanhHai99/NodeJS_Messenger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.3"
+  }
+}
