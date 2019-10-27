@@ -10,6 +10,7 @@ let sum = (a, b, callback) => {
   }, 2000);
 };
 
+//invoke
 sum(1, 2, (error, total1) => {
   if (error) {
     console.log(error);

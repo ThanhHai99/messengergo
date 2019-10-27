@@ -9,6 +9,7 @@ let sum = (a, b) => {
   });
 };
 
+
 sum(1, 2)
   .then(total1 => sum(total1, 10))
   .then(total2 => sum(total2, 10))

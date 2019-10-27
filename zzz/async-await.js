@@ -4,13 +4,6 @@ let sum = (a, b) => {
       return reject("Gia tri truyen vap phai la number");
     }
     resolve(a + b);
-    
-    // setTimeout(() => {
-    //   if (typeof a != "number" || typeof b != "number") {
-    //     return reject("Gia tri truyen vap phai la number");
-    //   }
-    //   resolve(a + b);
-    // }, 100);
   });
 };
 
