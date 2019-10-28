@@ -1,4 +1,6 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+
+const mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 let ContactSchema = new Schema({
@@ -9,5 +11,11 @@ let ContactSchema = new Schema({
   updateAt: { type: Number, default: null },
   deleteAt: { type: Number, default: null }
 });
+
+ContactSchema.statics = {
+  createNew(item) {
+    return this.create(item);
+  }
+};
 
 module.exports = mongoose.model("contact", ContactSchema);
