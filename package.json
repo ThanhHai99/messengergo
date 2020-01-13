@@ -19,7 +19,9 @@
   "homepage": "https://github.com/ThanhHai99/NodeJS_Messenger#readme",
   "dependencies": {
     "bluebird": "^3.5.3",
+    "ejs": "^2.5.7",
     "express": "^4.17.1",
+    "express-ejs-extend": "0.0.1",
     "mongoose": "^4.13.9",
     "nodemon": "^1.19.4"
   },

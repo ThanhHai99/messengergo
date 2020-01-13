@@ -1,3 +1,4 @@
+# source sh/env.sh
 export DB_CONNECTION=***
 export DB_HOST=***
 export DB_PORT=***
