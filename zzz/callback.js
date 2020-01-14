@@ -2,7 +2,7 @@ let sum = (a, b, callback) => {
   setTimeout(() => {
     let error, result;
     if (typeof a != "number" || typeof b != "number") {
-      error = "Gia tir truyen vap phai la number";
+      error = "Gia tri truyen vao phai la so";
       return callback(error, null);
     }
     result = a + b;
