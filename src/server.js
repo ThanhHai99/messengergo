@@ -1,18 +1,15 @@
-// import express from "express";
+import express from "express";
 // import ConnectDB from "./config/connectDB";
-// import ContactModel from "./model/contact.model"
-const express = require("express");
-const ConnectDB = require("./config/connectDB");
-const configViewEngine = require("./config/viewEngine");
+// import ContactModel from "./model/contact.model";
 
 //Init app
-let app = express();
+const app = express();
 
-//Connect DB
-ConnectDB();
+// //Connect DB
+// ConnectDB();
 
-//Config view Engine
-configViewEngine(app);
+// //Config view Engine
+// configViewEngine(app);
 
 app.get("/", (req, res) => {
   res.render("main/master");
@@ -25,3 +22,5 @@ app.get("/login-register", (req, res) => {
 app.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
   console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
 );
+
+console.log("log", process.env.APP_HOST);
