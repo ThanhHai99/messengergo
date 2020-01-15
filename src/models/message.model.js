@@ -1,9 +1,9 @@
-// import mongose, { Schema } from "mongoose";
+//message.model.js
+import mongose, { Schema } from "mongoose";
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-let Schema = mongoose,
-  Schema;
+let Schema = mongoose.Schema;
 let MessageSchema = new Schema({
   sender: {
     id: String,

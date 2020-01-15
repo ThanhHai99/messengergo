@@ -1,7 +1,7 @@
-// import mongoose from "mongoose";
-
 //user.models.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+
+// const mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 let UserSchema = new Schema({
