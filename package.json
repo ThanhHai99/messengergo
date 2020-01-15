@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/ThanhHai99/NodeJS_Messenger#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^4.13.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

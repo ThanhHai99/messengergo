@@ -1,6 +1,7 @@
-// import mongoose from "mongoose";
+///contact.model.js
+import mongoose from "mongoose";
 
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 let ContactSchema = new Schema({
@@ -12,10 +13,10 @@ let ContactSchema = new Schema({
   deleteAt: { type: Number, default: null }
 });
 
-ContactSchema.statics = {
-  createNew(item) {
-    return this.create(item);
-  }
-};
+// ContactSchema.statics = {
+//   createNew(item) {
+//     return this.create(item);
+//   }
+// };
 
 module.exports = mongoose.model("contact", ContactSchema);

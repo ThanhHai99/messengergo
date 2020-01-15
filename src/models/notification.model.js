@@ -1,6 +1,6 @@
-// import mongose, { Schema } from "mongoose";
-
-const mongoose = require("mongoose");
+//notification.model.js
+import mongose, { Schema } from "mongoose";
+// const mongoose = require("mongoose");
 
 let Schema = mongoose,
   Schema;
@@ -21,4 +21,4 @@ let NotificationSchema = new Schema({
   createAt: { type: Number, default: Date.now }
 });
 
-module.exports = mongose.model("notofication", NotificationSchema);
+module.exports = mongose.model("notification", NotificationSchema);
