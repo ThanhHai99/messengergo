@@ -1,11 +1,7 @@
 import mongoose from "mongoose";
 import bluebird from "bluebird";
 
-// const mongoose = require("mongoose");
-// const bluebird = require("bluebird");
-
 /* Connect to MongoDB*/
-
 let connectDB = () => {
   mongoose.Promise = bluebird;
 

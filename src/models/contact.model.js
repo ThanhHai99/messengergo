@@ -1,8 +1,6 @@
 ///contact.model.js
 import mongoose from "mongoose";
 
-// const mongoose = require("mongoose");
-
 let Schema = mongoose.Schema;
 let ContactSchema = new Schema({
   userId: String,

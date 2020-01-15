@@ -1,6 +1,5 @@
 //notification.model.js
 import mongose, { Schema } from "mongoose";
-// const mongoose = require("mongoose");
 
 let Schema = mongoose,
   Schema;
