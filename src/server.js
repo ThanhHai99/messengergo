@@ -1,7 +1,7 @@
 import express from "express";
 import ConnectDB from "./config/connectDB";
-import ContactModel from "./models/contact.model";
 import configViewEngine from "./config/viewEngine";
+import initRoutes from "./routes/web"
 
 //Init app
 const app = express();
@@ -12,12 +12,8 @@ ConnectDB();
 //Config view Engine
 configViewEngine(app);
 
-app.get("/", (req, res) => {
-  res.render("main/master");
-});
-app.get("/login-register", (req, res) => {
-  res.render("auth/loginRegister");
-});
+//Inti all routes
+initRoutes(app);
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
   console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
