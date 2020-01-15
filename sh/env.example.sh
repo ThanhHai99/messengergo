@@ -1,4 +1,5 @@
 #Run: source sh/env.sh
+
 #Config database environment variable
 export DB_CONNECTION=***
 export DB_HOST=***
