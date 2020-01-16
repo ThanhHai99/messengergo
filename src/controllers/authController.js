@@ -1,5 +1,5 @@
 let getLoginRegister = (req, res) => {
-    res.render("auth/loginRegister");
+    res.render("auth/master");
 };
 let getLogout = (req, res) => {
     res.render("auth/logout");

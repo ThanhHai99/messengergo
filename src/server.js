@@ -1,7 +1,7 @@
 import express from "express";
 import ConnectDB from "./config/connectDB";
 import configViewEngine from "./config/viewEngine";
-import initRoutes from "./routes/web"
+import initRoutes from "./routes/web";
 
 //Init app
 const app = express();
