@@ -4,3 +4,5 @@ module.exports = transValidation = {
     password_incorrect: "Mat khau khong hop le",
     password_confirmation_incorrect: "Mat khau nhap lai khong hop le"
 };
+
+
