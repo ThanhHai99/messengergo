@@ -1,6 +1,5 @@
 import {check} from "express-validator/check";
-const transValidation = require("./../../lang/vi");
-// import {transValidation} from "./../../lang/vi";
+import {transValidation} from "./../../lang/vi";
 
 let register = [
     check("email", transValidation.email_incorrect)
