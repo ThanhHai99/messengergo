@@ -1,4 +1,3 @@
-///contact.model.js
 import mongoose from "mongoose";
 
 let Schema = mongoose.Schema;

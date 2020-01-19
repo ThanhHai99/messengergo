@@ -1,4 +1,3 @@
-//chatGroup.model.js
 import mongose, { Schema } from "mongoose";
 
 let Schema = mongoose.Schema;
