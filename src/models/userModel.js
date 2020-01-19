@@ -1,7 +1,4 @@
-//user.models.js
 import mongoose from "mongoose";
-
-// const mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 let UserSchema = new Schema({
@@ -14,8 +11,8 @@ let UserSchema = new Schema({
   local: {
     email: { type: String, trim: true },
     password: String,
-    isAcive: { type: Boolean, default: false },
-    veryfyToken: String
+    isActive: { type: Boolean, default: false },
+    verifyToken: String
   },
   facebook: {
     uid: String,
@@ -38,9 +35,19 @@ UserSchema.statics = {
   },
   findByEmail(email){
     return this.findOne({"local.email": email}).exec();
+  },
+  removeById(id){
+    return this.findByIdAndRemove(id).exec();
+  },
+  findByToken(token){
+    return this.findOne({"local.verifyToken": token}).exec();
+  },
+  verify(token){
+    return this.findOneAndUpdate(
+      {"local.verifyToken": token},
+      {"local.isActive": true, "local.verifyToken": null}
+    ).exec();
   }
 };
-
-
 
 module.exports = mongoose.model("user", UserSchema);
