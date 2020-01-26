@@ -3,13 +3,13 @@ import passportLocal from "passport-local";
 import UserModel from "./../../models/userModel";
 import {transErrors, transSuccess} from "./../../../lang/vi";
 
-let localStratery = passportLocal.Strategy;
+let LocalStratery = passportLocal.Strategy;
 
 /**
  * Valid user account type local
  */
 let initPassportLocal = () => {
-    passport.use(new localStratery({
+    passport.use(new LocalStratery({
         usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
