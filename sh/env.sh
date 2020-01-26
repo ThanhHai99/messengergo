@@ -16,3 +16,8 @@ export MAIL_USER=tranhai23031999@gmail.com
 export MAIL_PASSWORD=thanhhai3303703
 export MAIL_HOST=smtp.gmail.com
 export MAIL_PORT=587
+
+#Config facebook login app
+export FB_APP_ID=159250902038344
+export FB_APP_SECRET=8e0bc9e77ce83c6edcd68c646d8887df
+export FB_CALLBACK_URL=https://localhost:2001/auth/facebook/callback
