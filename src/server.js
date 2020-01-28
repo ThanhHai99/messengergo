@@ -7,6 +7,36 @@ import connectFlash from "connect-flash";
 import configSession from "./config/session";
 import passport from "passport";
 
+//Init app
+const app = express();
+
+//Connect to DB
+ConnectDB();
+
+//Config session
+configSession(app);
+
+//Config view Engine
+configViewEngine(app);
+
+//Enable post data for request
+app.use(bodyParser.urlencoded({urlencoded: true}));
+
+//Enable flash message
+app.use(connectFlash());
+
+//Config passport js
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Inti all routes
+initRoutes(app);
+
+app.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
+  console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
+);
+
+/*
 import pem from "pem";
 import https from "https";
 
@@ -44,32 +74,4 @@ pem.createCertificate({ days: 1, selfSigned: true }, function (err, keys) {
 );
 
 });
-
-// //Init app
-// const app = express();
-
-// //Connect to DB
-// ConnectDB();
-
-// //Config session
-// configSession(app);
-
-// //Config view Engine
-// configViewEngine(app);
-
-// //Enable post data for request
-// app.use(bodyParser.urlencoded({urlencoded: true}));
-
-// //Enable flash message
-// app.use(connectFlash());
-
-// //Config passport js
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// //Inti all routes
-// initRoutes(app);
-
-// app.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
-//   console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
-// );
+*/
