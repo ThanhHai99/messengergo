@@ -7,14 +7,13 @@ const transValidation = {
 
 const transErrors = {
   account_in_use: "Email này đã được sử dụng.",
-  account_removed:
-    "Tài khoản này đã bị loại khỏi hệ thống. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi",
-  account_not_active:
-    "Email này đã được đăng kí nhưng chưa active, vui lòng kiểm tra email của bạn hoặc liên hệ với bộ phận hỗ trợ của chúng tôi.",
+  account_removed: "Tài khoản này đã bị loại khỏi hệ thống. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi",
+  account_not_active: "Email này đã được đăng kí nhưng chưa active, vui lòng kiểm tra email của bạn hoặc liên hệ với bộ phận hỗ trợ của chúng tôi.",
   token_undefined: "Token không tồn tại!",
   login_failed: "Sai mật khẩu hoặc tài khoản!",
-  server_error:
-    "Có lỗi ở phía server. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi để báo cáo lỗi này, xin cảm ơn."
+  server_error: "Có lỗi ở phía server. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi để báo cáo lỗi này, xin cảm ơn.",
+  avatar_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
+  avatar_size: "Chi cho phep anh toi da la 1MB."
 };
 
 const transSuccess = {
@@ -26,7 +25,8 @@ const transSuccess = {
   loginSuccess: username => {
     return `Xin chào ${username}, chúc bạn một ngày tốt lành.`;
   },
-  logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!"
+  logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!",
+  avatar_updated: "Cap nhat anh dai dien thanh cong"
 };
 
 const transMail = {
