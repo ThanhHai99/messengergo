@@ -72,7 +72,7 @@ $(document).ready(function () {
 
 
   $("#input-btn-update-user").bind("click", function() {
-    if ($.isEmptyObject(userInfo)==true && userAvatar != null){
+    if ($.isEmptyObject(userInfo)==true && userAvatar==null){
       alertify.notify("Ban phai thay doi thong tin truoc khi cap nhat du lieu", "error", 7);
       return false;
     }
@@ -84,19 +84,34 @@ $(document).ready(function () {
       processData: false,
       data: userAvatar,
       success: function(result) {
-        //
+        // Dislay success
+        $(".user-modal-alert-success").find("span").text(result.message);
+        $(".user-modal-alert-success").css("display", "block");
+
+        // Update avatar at navbar
+        $("#navbar-avatar").attr("src", result.imageSrc);
+
+        // update origin avatar src
+        originAvatarSrc = result.imageSrc;
+
+        // Reset all
+        $("#input-btn-cancel-update-user").click();
        },
       error: function(error) { 
-        //
+        // Dislay error
+        $(".user-modal-alert-error").find("span").text(error.responseText);
+        $(".user-modal-alert-error").css("display", "block");
+
+        // Reset all
+        $("#input-btn-cancel-update-user").click();      
       }
     });
-    // console.log(userAvatar);
-    // console.log(userInfo);
   });
 
   $("#input-btn-cancel-update-user").bind("click", function() {
-    userAvatar=null;
-    userInfo={};
+    userAvatar = null;
+    userInfo = {};
+    $("#input-change-avatar").val(null);
     $("#user-modal-avatar").attr("src", originAvatarSrc);
   });
 
