@@ -19,6 +19,8 @@ let postRegister = async (req, res) => {
 		errors.forEach(item => {
 			errorArr.push(item.msg);
 		});
+		req.flash("errors", errorArr);
+		return res.redirect("/login-register");
 	}
 	try {
 		let createUserSuccess = await auth.register(req.body.email,req.body.gender,req.body.password,req.protocol,req.get("host"));
