@@ -2,7 +2,11 @@ const transValidation = {
   email_incorrect: "Email không hợp lệ.",
   gender_incorrect: "Sao giới tính lại bị sai nhỉ?",
   password_incorrect: "Mật khẩu không hợp lệ.",
-  password_confirmation_incorrect: "Mật khẩu nhập lại không hợp lệ."
+  password_confirmation_incorrect: "Mật khẩu nhập lại không hợp lệ.",
+  update_username: "Username gioi han trong khoang 3-17 ky tu khong chua ky tu dac biet.",
+  update_gender: "Oops! Wow bạn là hacker à!!!",
+  update_address: "Địa chỉ giới hạn 3-30 ký tự.",
+  update_phone: "Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự."
 };
 
 const transErrors = {
@@ -26,7 +30,7 @@ const transSuccess = {
     return `Xin chào ${username}, chúc bạn một ngày tốt lành.`;
   },
   logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!",
-  avatar_updated: "Cap nhat anh dai dien thanh cong"
+  user_info_updated: "Cap nhat thong tin user thanh cong"
 };
 
 const transMail = {
