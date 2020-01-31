@@ -2,6 +2,7 @@ const transValidation = {
   email_incorrect: "Email không hợp lệ.",
   gender_incorrect: "Sao giới tính lại bị sai nhỉ?",
   password_incorrect: "Mật khẩu không hợp lệ.",
+  password_new_incorrect: "Mật khẩu mới không hợp lệ.",
   password_confirmation_incorrect: "Mật khẩu nhập lại không hợp lệ.",
   update_username: "Username gioi han trong khoang 3-17 ky tu khong chua ky tu dac biet.",
   update_gender: "Oops! Wow bạn là hacker à!!!",
@@ -13,11 +14,13 @@ const transErrors = {
   account_in_use: "Email này đã được sử dụng.",
   account_removed: "Tài khoản này đã bị loại khỏi hệ thống. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi",
   account_not_active: "Email này đã được đăng kí nhưng chưa active, vui lòng kiểm tra email của bạn hoặc liên hệ với bộ phận hỗ trợ của chúng tôi.",
+  account_undefined: "Tài khoản không tồn tại",
   token_undefined: "Token không tồn tại!",
   login_failed: "Sai mật khẩu hoặc tài khoản!",
   server_error: "Có lỗi ở phía server. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi để báo cáo lỗi này, xin cảm ơn.",
   avatar_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
-  avatar_size: "Chi cho phep anh toi da la 1MB."
+  avatar_size: "Chi cho phep anh toi da la 1MB.",
+  user_current_password_failed: "Mật khẩu hiện tại không chính xác"
 };
 
 const transSuccess = {
@@ -30,7 +33,8 @@ const transSuccess = {
     return `Xin chào ${username}, chúc bạn một ngày tốt lành.`;
   },
   logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!",
-  user_info_updated: "Cap nhat thong tin user thanh cong"
+  user_info_updated: "Cap nhat thong tin user thanh cong",
+  user_password_updated: "Cap nhat mat khau thanh cong"
 };
 
 const transMail = {

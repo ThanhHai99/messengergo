@@ -2,6 +2,31 @@ let userAvatar = null;
 let userInfo = {};
 let originAvatarSrc = null;
 let originUserInfo = {};
+let userUpdatePassword = {};
+
+function callLogout() {
+	let timerInterval;
+	Swal.fire({
+		position: 'top-end',
+		title: 'Tự động đăng xuất sau 5 giây.',
+		html:"Thời gian <strong></strong>",
+		showConfirmButton: false,
+		timer: 5000,
+		onBeforeOpen: () => {
+			Swal.showLoading();
+			timerInterval = setInterval(() => {
+				Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
+			}, 1000);
+		},
+		onClose: () => {
+			clearInterval(timerInterval);
+		} 
+	}).then((result) => {
+		$.get("/logout" , function () {
+			location.reload();
+		});
+	});
+};
 
 function updateUserInfo() {
   $("#input-change-avatar").bind("change", function() {
@@ -47,7 +72,7 @@ function updateUserInfo() {
 
   $("#input-change-username").bind("change", function() {
 		let username = $(this).val();
-		let regexUsername = new RegExp("^[\s0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$");
+		let regexUsername = new RegExp(/^[\s0-9a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/);
 		
 		if(!regexUsername.test(username) || username.length<3 || username.length>17){
 			alertify.notify("Username gioi han trong khoang 3-17 ky tu khong chua ky tu dac biet.", "error", 7);
@@ -99,7 +124,7 @@ function updateUserInfo() {
 
   $("#input-change-phone").bind("change", function() {
 		let phone = $(this).val();
-		let regexPhone = new RegExp("^(0)[0-9]{9,10}$");
+		let regexPhone = new RegExp(/^(0)[0-9]{9,10}$/);
 		if(!regexPhone.test(phone)){
 			alertify.notify("Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự.", "error", 7);
 			$(this).val(originUserInfo.phone);
@@ -108,7 +133,52 @@ function updateUserInfo() {
 		}
 
 		userInfo.phone = phone;
-  });
+	});
+	
+	$("#input-change-current-password").bind("change", function() {
+		let currentPassword = $(this).val();
+		let regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/);
+		if(!regexPassword.test(currentPassword)){
+			alertify.notify("Mật khẩu không hợp lệ.", "error", 7);
+			$(this).val(null);
+			delete userUpdatePassword.currentPassword;
+			return false;
+		}
+
+		userUpdatePassword.currentPassword = currentPassword;
+	});
+
+	$("#input-change-new-password").bind("change", function() {
+		let newPassword = $(this).val();
+		let regexPassword = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/);
+		if(!regexPassword.test(newPassword)){
+			alertify.notify("Mật khẩu mớikhông hợp lệ.", "error", 7);
+			$(this).val(null);
+			delete userUpdatePassword.newPassword;
+			return false;
+		}
+
+		userUpdatePassword.newPassword = newPassword;
+	});
+
+	$("#input-change-confirm-new-password").bind("change", function() {
+		let confirmNewPassword = $(this).val();
+		
+		if(!userUpdatePassword.newPassword){
+			alertify.notify("Chưa nhập mật khẩu mới.", "error", 7);
+			$(this).val(null);
+			delete userUpdatePassword.confirmNewPassword;
+			return false;
+		}
+		if(confirmNewPassword !== userUpdatePassword.newPassword){
+			alertify.notify("Nhập lại mật khẩu mới không đúng.", "error", 7);
+			$(this).val(null);
+			delete userUpdatePassword.confirmNewPassword;
+			return false;
+		}
+
+		userUpdatePassword.confirmNewPassword = confirmNewPassword;
+	});
 }
 
 function callUpdateUserAvatar() {
@@ -172,7 +242,36 @@ function callUpdateUserInfo() {
 			$("#input-btn-cancel-update-user").click();      
 		}
 	});
-}
+};
+
+function callUpdateUserPassword() {
+	$.ajax({
+		url: "/user/update-password",
+		type: "put", //khi update data
+		data: userUpdatePassword,
+		success: function(result) {
+			// Dislay success
+			$(".user-modal-password-alert-success").find("span").text(result.message);
+			$(".user-modal-password-alert-success").css("display", "block");
+
+			// Reset all
+			$("#input-btn-cancel-update-user").click();
+
+			//Logout after change password success
+			callLogout();
+			
+		 },
+		error: function(error) { 
+			// Dislay error
+			$(".user-modal-password-alert-error").find("span").text(error.responseText);
+			$(".user-modal-password-alert-error").css("display", "block");
+
+			// Reset all
+			$("#input-btn-cancel-update-user").click();
+
+		}
+	});
+};
 
 $(document).ready(function () {
 	
@@ -215,5 +314,34 @@ $(document).ready(function () {
 		$("#input-change-phone").val(originUserInfo.phone);
   });
 
+  $("#input-btn-update-user-password").bind("click", function() {
+		if(!userUpdatePassword.currentPassword || !userUpdatePassword.newPassword || !userUpdatePassword.confirmNewPassword){
+			alertify.notify("Ban phai thay doi day du thong tin", "error", 7);
+			return false;
+		}
+		Swal.fire({
+			title: "Bạn có chắc chắn thay đổi mật khẩu không?",
+			text: "Bạn không thể hoàn tác lại quá trình này!",
+			icon: "info",
+			showCancelButton: true,
+			confirmButtonColor: "#2ECC71",
+			cancelButtonColor: "#ff7675",
+			confirmButtonText: "Xác nhận",
+			cancelButtonText: "Hủy"
+		}).then((result) => {
+			if (!result.value) {
+				$("#input-btn-cancel-update-user-password").click();
+				return false;
+			}
+			callUpdateUserPassword();
+		});
+	});
+
+  $("#input-btn-cancel-update-user-password").bind("click", function() {
+		userUpdatePassword = {};
+		$("#input-change-current-password").val(null);
+		$("#input-change-new-password").val(null);
+		$("#input-change-confirm-new-password").val(null);
+	});
 
 });
