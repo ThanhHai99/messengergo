@@ -1,36 +1,30 @@
 import express from "express";
 import ConnectDB from "./config/connectDB";
-import configViewEngine from "./config/viewEngine";
-import initRoutes from "./routes/web";
-import bodyParser from "body-parser";
-import connectFlash from "connect-flash";
 import configSession from "./config/session";
-import passport from "passport";
+import configViewEngine from "./config/viewEngine";
+import configBodyParser from "./config/bodyParse";
+import configFlash from "./config/connectFlash";
+import configPassport from "./config/passport";
+import configRoutes from "./routes/web";
 
 //Init app
 const app = express();
 
-//Connect to DB
 ConnectDB();
 
-//Config session
 configSession(app);
 
-//Config view Engine
 configViewEngine(app);
 
 //Enable post data for request
-app.use(bodyParser.urlencoded({urlencoded: true}));
+configBodyParser(app);
 
 //Enable flash message
-app.use(connectFlash());
+configFlash(app);
 
-//Config passport js
-app.use(passport.initialize());
-app.use(passport.session());
+configPassport(app);
 
-//Inti all routes
-initRoutes(app);
+configRoutes(app);
 
 app.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
   console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)

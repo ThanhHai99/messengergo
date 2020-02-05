@@ -14,7 +14,7 @@ let postRegister = async (req, res) => {
 	let successArr = [];
 
 	let validationErrors = validationResult(req);
-	if (!validationErrors.isEmpty()) {
+	if (!validationErrors.isEmpty()) {//Not success, if fail .isEmpty() return false
 		let errors = Object.values(validationErrors.mapped());
 		errors.forEach(item => {
 			errorArr.push(item.msg);
@@ -70,10 +70,5 @@ let checkLoggedOut = (req, res, next) => {
 };
 
 module.exports = {
-	getLoginRegister: getLoginRegister,
-	postRegister: postRegister,
-	verifyAccount: verifyAccount,
-	getLogout: getLogout,
-	checkLoggedIn: checkLoggedIn,
-	checkLoggedOut: checkLoggedOut
+	getLoginRegister, postRegister,	verifyAccount, getLogout,	checkLoggedIn, checkLoggedOut
 };

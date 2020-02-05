@@ -1,10 +1,8 @@
 import express from "express";
 import { auth, home, user } from "./../controllers/index";
+import {initPassportLocal, initPassportGoogle, initPassportFacebook} from "./../controllers/passportController/index";
 import { authValid, userValid } from "./../validation/index";
 import passport from "passport";
-import initPassportLocal from "./../controllers/passportController/local";
-import initPassportFacebook from "./../controllers/passportController/facebook";
-import initPassportGoogle from "./../controllers/passportController/google";
 
 //Init all passport
 initPassportLocal();
@@ -18,11 +16,12 @@ let router = express.Router();
  * @param app from exactly express module
  */
 
-let initRoutes = (app) => {
+let configRoutes = (app) => {
 	router.get("/login-register", auth.checkLoggedOut, auth.getLoginRegister);
 	router.post("/register", auth.checkLoggedOut, authValid.register, auth.postRegister);
 	router.get("/verify/:token", auth.checkLoggedOut, auth.verifyAccount);
 
+	
 	router.post("/login", auth.checkLoggedOut, passport.authenticate("local", {
 			successRedirect: "/",
 			failureRedirect: "/login-register",
@@ -58,4 +57,4 @@ let initRoutes = (app) => {
 	return app.use("/", router);
 };
 
-module.exports = initRoutes;
+module.exports = configRoutes;

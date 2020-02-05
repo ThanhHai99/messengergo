@@ -14,7 +14,7 @@ let sessionStore = new MongoStore({
  * @param app from exactly express module
  */
 
-let configSession = app => {
+let configSession = (app) => {
 	app.use(
 		session({
 			key: "express.sid",
@@ -23,7 +23,7 @@ let configSession = app => {
 			resave: true,
 			saveUninitialized: false,
 			cookie: {
-				maxAge: 1000 * 60 * 60 * 24 //=86.400.000 milisecond = 1 day
+				maxAge: 1000 * 60 * 60 * 24 // milisecond = 1 day
 			}
 		})
 	);
