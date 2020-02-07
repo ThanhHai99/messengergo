@@ -1,7 +1,10 @@
 /**
  * Created by https://trungquandev.com's author on 25/02/2018.
  */
-function nineScrollLeft() {
+
+const socket = io();
+
+ function nineScrollLeft() {
   $(".left").niceScroll({
     smoothscroll: true,
     horizrailenabled: false,
