@@ -11,6 +11,10 @@ export DB_PASSWORD=""
 export APP_HOST=localhost
 export APP_PORT=2001
 
+#Config session key and secret
+export SESSTION_KEY = "express.sid"
+export SESSTION_SECRET = "mySecret"
+
 #Config admin email account
 export MAIL_USER=tranhai23031999@gmail.com
 export MAIL_PASSWORD=thanhhai3303703
