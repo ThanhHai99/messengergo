@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { contact } from "../controllers";
 
 let Schema = mongoose.Schema;
 let ContactSchema = new Schema({
@@ -13,6 +14,39 @@ let ContactSchema = new Schema({
 ContactSchema.statics = {
   createNew(item) {
     return this.create(item);
+  },
+
+  findAllByUser(userId){
+    return this.find({
+      $or: [
+        {"userId": userId},
+        {"contactId": userId}
+      ]
+    }).exec();
+  },
+
+  checkExists(userId, contactId){
+    return this.findOne({
+      $or: [
+        {$and: [
+          {"userId": userId},
+          {"contactId": contactId}
+        ]},
+        {$and: [
+          {"userId": contactId},
+          {"contactId": userId}
+        ]}
+      ]
+    })
+  },
+
+  removeRequestContact(userId, contactId) {
+    return this.remove({
+      $and: [
+        {"userId": userId},
+        {"contactId": contactId}
+      ]
+    }).exec();
   }
 };
 
