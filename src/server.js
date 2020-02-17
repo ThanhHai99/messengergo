@@ -53,7 +53,7 @@ io.use(passportSocketIo.authorize({
   fail: (data, message, error, accept) => {
     if(error) {
       console.log("fail to connect to socketio", message);
-      return accept(new Error(message), false);;
+      return accept(new Error(message), false);
     }
   }
 }));
