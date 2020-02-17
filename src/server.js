@@ -43,7 +43,7 @@ io.use(passportSocketIo.authorize({
   cookieParser: cookieParser,
   key: process.env.SESSION_KEY,
   secret: process.env.SESSION_SECRET,
-  store: session.sesstionStore,
+  store: session.sessionStore,
   success: (data, accept) => {
     if (!data.user.logged_in) {
       return accept("Invalid", false);
