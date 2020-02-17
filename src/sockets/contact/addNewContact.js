@@ -29,6 +29,4 @@ let addNewContact = (io) => {
   });
 };
 
-module.exports = {
-  addNewContact
-};
+module.exports = addNewContact;

@@ -29,6 +29,4 @@ let removeRequestContact = (io) => {
   });
 };
 
-module.exports = {
-  removeRequestContact
-};
+module.exports = removeRequestContact;
