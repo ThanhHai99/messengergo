@@ -39,6 +39,7 @@ let verifyAccount = async (req, res) => {
 	let successArr = [];
 	try {
 		let verifySuccess = await auth.verifyAccount(req.params.token);
+	await auth.verifyAccount(req.params.token);
 		successArr.push(verifySuccess);
 		req.flash("success", successArr);
 		return res.redirect("/login-register");

@@ -34,7 +34,7 @@ let register = (email, gender, password, protocol, host) => {
 		let linkVerify = `${protocol}://${host}/verify/${user.local.verifyToken}`;
 		//send email
 		sendMail(email, transMail.subject, transMail.template(linkVerify))
-			.then((success) => {
+			.then(success => {
 				resolve(transSuccess.userCreated(user.local.email));
 			})
 			.catch(async (error) => {

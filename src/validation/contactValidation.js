@@ -1,5 +1,5 @@
 let findUsersContact = () => {
-
+  return true;
 };
 
 module.exports = {
