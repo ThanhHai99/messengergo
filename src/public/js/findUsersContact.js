@@ -1,28 +1,12 @@
 let keyword = null;
 let callFindUsers = () => {
-  $.ajax({
-		url: `/contact/find-users/${keyword}`,
-    type: "get",
-    data: {},
-    dataType: 'json',
-		success: function(result) {
-      console.log("result = " + result.responseText);
-			// Dislay success
-			// $(".user-modal-alert-success").find("span").text(result.message);
-			// $(".user-modal-alert-success").css("display", "block");
-
-			//upadte origin user info
-			// originUserInfo = Object.assign(originUserInfo, userInfo);
-
-			//update username at navbar
-			// $("#navbar-username").text(originUserInfo.username);
-		 },
-		error: function(error) { 
-      $(".contactList").html("");
-			$(".contactList").prepend(error.responseText);
-      // $(".user-remove-request-contact").css("display", "block");
-		}
-	});
+  $.get(`/contact/find-users/${keyword}`, function(data){
+    $(".contactList").html("");
+		// $(".contactList").prepend(data);
+    $(".contactList").html(data);
+    addContact(); // js/addContact.js
+    removeRequestContact(); // js/removeRequestContact.js
+  });
 };
 
 $(document).ready(() => {
@@ -30,6 +14,9 @@ $(document).ready(() => {
     keyword = $("#input-find-users-contact").val();
     if(keyword){
       callFindUsers();
+    }
+    else {
+      $(".contactList").html("");
     }
   });
   
@@ -39,6 +26,7 @@ $(document).ready(() => {
       callFindUsers();
     }
     else{
+      $(".contactList").html("");
       alertify.notify("Nhập vào tên người dùng để tìm kiếm!", "error", 5);
     }
   });

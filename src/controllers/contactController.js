@@ -1,5 +1,4 @@
 import {contact} from "./../services/index";
-import {validationResult} from "express-validator/check";
 
 let findUsersContact = async (req, res) => {
   try {
