@@ -14,11 +14,7 @@ let removeRequestContact = (io) => {
         id: socket.request.user._id
       };
 
-      //emit notification
       if(clients[data.contactId]){
-        // clients[data.contactId].forEach(socketId => {
-        //   io.sockets.connected[socketId].emit("response-remove-request-contact", currentUser);
-        // });
         emitNotifyToArray(clients, data.contactId, io, "response-remove-request-contact", currentUser);
       }
     });

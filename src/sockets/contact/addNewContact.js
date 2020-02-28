@@ -5,7 +5,9 @@ import {pushSocketIdToArray, emitNotifyToArray, removeSocketIdFromArray} from ".
 let addNewContact = (io) => {
   let clients = {};
   io.on("connection", (socket) => {
-    clients = pushSocketIdToArray(clients, socket.request.user._id, socket.id);
+    let currentUserId = socket.request.user._id;
+    
+    clients = pushSocketIdToArray(clients, currentUserId, socket.id);
 
     socket.on("add-new-contact", (data) => {
       let currentUser = {
@@ -14,18 +16,13 @@ let addNewContact = (io) => {
         avatar: socket.request.user.avatar
       };
 
-      // if(clients[data.contactId]){
-      //   // clients[data.contactId].forEach(socketId => {
-      //   //   io.sockets.connected[socketId].emit("response-add-new-contact", currentUser);
-      //   // });
-      //   emitNotifyToArray(clients, data.contactId, io, "response-add-new-contact", currentUser);
-      // }
-      console.log(data);
-      console.log(currentUser);
+      if(clients[data.contactId]){
+        emitNotifyToArray(clients, data.contactId, io, "response-add-new-contact", currentUser);
+      }
     });
 
     socket.on("disconnect", () => {
-      clients = removeSocketIdFromArray(clients, socket.request.user._id, socket);
+      clients = removeSocketIdFromArray(clients, currentUserId, socket);
     });
   });
 };
