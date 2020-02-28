@@ -1,7 +1,6 @@
 function addContact() {
  $(".user-add-new-contact").bind("click", function () {
    let targetId = $(this).data("uid");
-   console.log(targetId);
    $.post("/contact/add-new", {uid: targetId}, function(data) {
      if(data.success){
        $("#find-user").find(`div.user-add-new-contact[data-uid = ${targetId}]`).hide();
@@ -19,7 +18,8 @@ socket.on("response-add-new-contact", function(user){
                 <strong>${ user.username }</strong> đã gửi cho bạn một lời mời kết bạn!
               </span><br><br><br>`;
   $(".noti_content").prepend(notif);
-  increaseNumberNotofifContact("count-request-contact-received");
-  increaseNumberNotofifContact("noti_contact_counter");
-  increaseNumberNotofifContact("noti_counter");
+  increaseNumberNotifContact("count-request-contact-received");
+
+  increaseNumberNotification("noti_contact_counter");
+  increaseNumberNotification("noti_counter");
 });
