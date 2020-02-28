@@ -8,9 +8,9 @@ function removeRequestContact() {
       success: function (data) {
         if(data.success){
           $("#find-user").find(`div.user-remove-request-contact[data-uid = ${targetId}]`).hide();
-          $("#find-user").find(`div.user-add-new-contact[data-uid = ${targetId}]`).css("dislay", "inline-block");
+          $("#find-user").find(`div.user-add-new-contact[data-uid = ${targetId}]`).css("display", "inline-block");
           decreaseNumberNotifContact("count-request-contact-sent");
-          socket.emit("remove-request-contact", {contactId: targetId});
+          // socket.emit("remove-request-contact", {contactId: targetId});
         }
       }
     });
