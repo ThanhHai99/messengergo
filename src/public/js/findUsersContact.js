@@ -1,21 +1,45 @@
+let keyword = null;
 let callFindUsers = () => {
-  let keyword = $("#input-find-users-contact").val();
+  $.ajax({
+		url: `/contact/find-users/${keyword}`,
+    type: "get",
+    data: {},
+    dataType: 'json',
+		success: function(result) {
+      console.log("result = " + result.responseText);
+			// Dislay success
+			// $(".user-modal-alert-success").find("span").text(result.message);
+			// $(".user-modal-alert-success").css("display", "block");
 
-  // if(!regexKeyword.test(keyword)) {
-  //   alertify.notify("Loi tu khoa tim kiem, chi cho phep ky tu chu cai va so, cho phep khoang trong", "error", 5);
-  //   return false;
-  // }
+			//upadte origin user info
+			// originUserInfo = Object.assign(originUserInfo, userInfo);
 
-  
-  $.get(`/contact/find-users/${keyword}`, function (data) {
-    $("#find-user ul").html(data);
-    addContact();
-    removeRequestContact();
-  });
-  
+			//update username at navbar
+			// $("#navbar-username").text(originUserInfo.username);
+		 },
+		error: function(error) { 
+      $(".contactList").html("");
+			$(".contactList").prepend(error.responseText);
+      // $(".user-remove-request-contact").css("display", "block");
+		}
+	});
 };
 
-$(document).ready(function () {
-  $("#input-find-users-contact").bind("keypress", callFindUsers);
-  $("#btn-find-users-contact").bind("click", callFindUsers);
-})
+$(document).ready(() => {
+  $("#input-find-users-contact").bind("keyup", () => {
+    keyword = $("#input-find-users-contact").val();
+    if(keyword){
+      callFindUsers();
+    }
+  });
+  
+  $("#btn-find-users-contact").bind("click", () => {
+    keyword = $("#input-find-users-contact").val();
+    if(keyword){
+      callFindUsers();
+    }
+    else{
+      alertify.notify("Nhập vào tên người dùng để tìm kiếm!", "error", 5);
+    }
+  });
+});

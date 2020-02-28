@@ -23,7 +23,7 @@ let postRegister = async (req, res) => {
 		return res.redirect("/login-register");
 	}
 	try {
-		let createUserSuccess = await auth.register(req.body.email,req.body.gender,req.body.password,req.protocol,req.get("host"));
+		let createUserSuccess = await auth.register(req.body.email,req.body.dislayName, req.body.gender,req.body.password,req.protocol,req.get("host"));
 		successArr.push(createUserSuccess);
 		req.flash("success", successArr);
 		return res.redirect("/login-register");
@@ -39,7 +39,7 @@ let verifyAccount = async (req, res) => {
 	let successArr = [];
 	try {
 		let verifySuccess = await auth.verifyAccount(req.params.token);
-	await auth.verifyAccount(req.params.token);
+		await auth.verifyAccount(req.params.token);
 		successArr.push(verifySuccess);
 		req.flash("success", successArr);
 		return res.redirect("/login-register");

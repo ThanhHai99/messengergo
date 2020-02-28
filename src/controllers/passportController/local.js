@@ -38,6 +38,7 @@ let initPassportLocal = () => {
       }
     )
   );
+  
   //Save userId to session
   passport.serializeUser((user, done) => {
     done(null, user._id);

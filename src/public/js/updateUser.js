@@ -184,7 +184,7 @@ function updateUserInfo() {
 function callUpdateUserAvatar() {
 	$.ajax({
 		url: "/user/update-avatar",
-		type: "put", //khi update data
+		type: "put", //method when use ajax
 		cache: false,
 		contentType: false,
 		processData: false,
@@ -274,9 +274,7 @@ function callUpdateUserPassword() {
 };
 
 $(document).ready(function () {
-	
-
-	
+	//get values origin to set for that input when appear error
 	originAvatarSrc = $("#user-modal-avatar").attr("src");
 	originUserInfo = {
 		username: $("#input-change-username").val(),
@@ -289,11 +287,11 @@ $(document).ready(function () {
 	updateUserInfo();
 
   $("#input-btn-update-user").bind("click", function() {
-    if ($.isEmptyObject(userInfo)==true && userAvatar==null){
+    if ($.isEmptyObject(userInfo) && !userAvatar){
       alertify.notify("Ban phai thay doi thong tin truoc khi cap nhat du lieu", "error", 7);
       return false;
 		}
-		if(userAvatar != null){
+		if(userAvatar){
 			callUpdateUserAvatar();
 		}
 		if(!$.isEmptyObject(userInfo)){
@@ -343,5 +341,4 @@ $(document).ready(function () {
 		$("#input-change-new-password").val(null);
 		$("#input-change-confirm-new-password").val(null);
 	});
-
 });

@@ -1,13 +1,13 @@
 <% if(errors != "") { %>
     <% errors.forEach((item) => { %>
-        <script>openRegisterModal();</script>
+        <script>openLoginModal();</script>
         <div class="alert alert-danger"><%- item %></div>
     <% }); %>
 <% } %>
 
 <% if(success != "") { %>
     <% success.forEach((item) => { %>
-        <script>openRegisterModal();</script>
+        <script>openLoginModal();</script>
         <div class="alert alert-success"><%- item %></div>
     <% }); %>
 <% } %>

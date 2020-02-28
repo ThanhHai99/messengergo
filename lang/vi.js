@@ -1,5 +1,6 @@
 const transValidation = {
   email_incorrect: "Email không hợp lệ.",
+  dislayName_incorrect: "Tên hiển thị quá ngắn.",
   gender_incorrect: "Sao giới tính lại bị sai nhỉ?",
   password_incorrect: "Mật khẩu không hợp lệ.",
   password_new_incorrect: "Mật khẩu mới không hợp lệ.",
@@ -7,7 +8,8 @@ const transValidation = {
   update_username: "Username gioi han trong khoang 3-17 ky tu khong chua ky tu dac biet.",
   update_gender: "Oops! Wow bạn là hacker à!!!",
   update_address: "Địa chỉ giới hạn 3-30 ký tự.",
-  update_phone: "Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự."
+  update_phone: "Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự.",
+  find_user: "Nhập tên người dùng để tìm kiếm."
 };
 
 const transErrors = {

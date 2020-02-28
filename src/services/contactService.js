@@ -1,19 +1,19 @@
 import ContactModel from "./../models/contactModel";
-import userModel from "./../models/userModel";
+import UserModel from "./../models/userModel";
 import _ from "lodash";
-import { contact } from "./../controllers/index";
 
-let findUsersContact = (currentUserId, keyword) => {
+let findUsersContact = (keyword) => {
 	return new Promise(async (resolve, reject) => {
-		let deprecateUserIds = [currentUserId];
-		let contactsByUser = await ContactModel.findAllByUser(currentUserId);
-		contactsByUser.forEach((contact) => {
-			deprecateUserIds.push(contact.userId);
-			deprecateUserIds.push(contact.contactId);
-		});
+		// let deprecateUserIds = [currentUserId];
+		// let contactsByUser = await ContactModel.findAllByUser(currentUserId);
+		// contactsByUser.forEach((contact) => {
+		// 	deprecateUserIds.push(contact.userId);
+		// 	deprecateUserIds.push(contact.contactId);
+		// });
 
-		deprecateUserIds = _.uniqBy(deprecateUserIds);
-		let users = await userModel.findAllForAddContact(deprecateUserIds, keyword);
+		// deprecateUserIds = _.uniqBy(deprecateUserIds);
+		// let users = await userModel.findAllForAddContact(deprecateUserIds, keyword);
+		let users = await UserModel.findAllForAddContact(keyword);
 		resolve(users);
 	})
 };
