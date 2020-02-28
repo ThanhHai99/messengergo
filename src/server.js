@@ -9,10 +9,11 @@ import configRoutes from "./routes/web";
 import http from "http";
 import socketio from "socket.io";
 import initSockets from "./sockets/index";
-// import configSocketIo from "./config/socketio";
 
-import passportSocketIo from "passport.socketio";
+// import passportSocketIo from "passport.socketio";
 import cookieParser from "cookie-parser";
+
+import configSocket from "./config/socketio";
 
 //Init app
 const app = express();
@@ -40,24 +41,7 @@ app.use(passport.session());
 
 configRoutes(app);
 
-io.use(passportSocketIo.authorize({
-  cookieParser: cookieParser,
-  key: process.env.SESSION_KEY,
-  secret: process.env.SESSION_SECRET,
-  store: session.sessionStore,
-  success: (data, accept) => {
-    if (!data.user.logged_in) {
-      return accept("Invalid", false);
-    }
-    return accept(null, true);
-  },
-  fail: (data, message, error, accept) => {
-    if(error) {
-      console.log("fail to connect to socketio", message);
-      return accept(new Error(message), false);
-    }
-  }
-}));
+configSocket(io);
 
 initSockets(io);
 

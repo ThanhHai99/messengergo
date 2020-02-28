@@ -1,6 +1,5 @@
 import {pushSocketIdToArray, emitNotifyToArray, removeSocketIdFromArray} from "./../../helpers/socketHelper";
 /**
- * 
  * @param io from socket.io library
  */
 let addNewContact = (io) => {
@@ -15,12 +14,14 @@ let addNewContact = (io) => {
         avatar: socket.request.user.avatar
       };
 
-      if(clients[data.contactId]){
-        // clients[data.contactId].forEach(socketId => {
-        //   io.sockets.connected[socketId].emit("response-add-new-contact", currentUser);
-        // });
-        emitNotifyToArray(clients, data.contactId, io, "response-add-new-contact", currentUser);
-      }
+      // if(clients[data.contactId]){
+      //   // clients[data.contactId].forEach(socketId => {
+      //   //   io.sockets.connected[socketId].emit("response-add-new-contact", currentUser);
+      //   // });
+      //   emitNotifyToArray(clients, data.contactId, io, "response-add-new-contact", currentUser);
+      // }
+      console.log(data);
+      console.log(currentUser);
     });
 
     socket.on("disconnect", () => {
