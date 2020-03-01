@@ -46,9 +46,18 @@ NotificationSchema.statics = {
         {"isRead": false}
       ]
     }).exec();
+  },
+  
+  /**
+   * Read more notification
+   * @param {string} userId 
+   * @param {number} skip 
+   * @param {number} limit 
+   */
+  readMore(userId, skip, limit) {
+    return this.find({"receiverId": userId}).sort({"createAt": -1}).skip(skip).limit(limit).exec();
   }
 };
-20.57
 
 const NOTIFICATION_TYPES = {
   ADD_CONTACT: "add_contact"
@@ -59,9 +68,9 @@ const NOTIFICATION_CONTENTS = {
     if (notificationType === NOTIFICATION_TYPES.ADD_CONTACT) {
       if(!isRead) {
         return `<div class="notif-readed-false" data-uid="${ userId }">
-                  <img class="avatar-small" src="images/users/${ userAvatar }" alt=""> 
-                    <strong>${ username }</strong> đã gửi cho bạn một lời mời kết bạn!
-                </div>`;
+        <img class="avatar-small" src="images/users/${ userAvatar }" alt=""> 
+        <strong>${ username }</strong> đã gửi cho bạn một lời mời kết bạn!
+        </div>`;
 
       }
       return `<div data-uid="${ userId }">
@@ -70,7 +79,8 @@ const NOTIFICATION_CONTENTS = {
               </div>`;
     }
     return "No matching with any notification type.";
-  }
+  },
+
 };
 
 module.exports = {

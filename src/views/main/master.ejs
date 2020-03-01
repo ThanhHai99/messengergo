@@ -16,7 +16,8 @@
 </head>
 <body onload="spinLoaded()">
     <!--Icon loader-->
-    <div id="loader"></div>
+    <!-- <div id="loader"></div> -->
+    <div id="loader"><div></div></div>
     
     <%- include('alert/alert'); %>
 
@@ -47,9 +48,12 @@
     
     <script src="js/caculateNotifContact.js"></script>
     <script src="js/caculateNotification.js"></script>
+
     <script src="js/addContact.js"></script>
     <script src="js/removeRequestContact.js"></script>
     <script src="js/findUsersContact.js"></script>
+
+    <script src="js/readMoreNotif.js"></script>
 
     <%- include('contact/contactModal'); %>
 
@@ -60,7 +64,7 @@
     <%- include('attach/attachModal'); %>
         
     <%- include('user/userModal'); %>
-`
+
     <%- include('groupChat/groupChatModal'); %>
 
     <%- include('notification/notificationModal'); %>
