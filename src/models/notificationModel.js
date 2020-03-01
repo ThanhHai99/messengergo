@@ -56,6 +56,21 @@ NotificationSchema.statics = {
    */
   readMore(userId, skip, limit) {
     return this.find({"receiverId": userId}).sort({"createAt": -1}).skip(skip).limit(limit).exec();
+  },
+
+  /**
+   * Mark notification as read
+   * @param {String} userId 
+   * @param {Array} targetUsers 
+   */
+  markAllAsRead(userId, targetUsers) {
+    return this.updateMany(
+      {$and: [
+        {"receiverId": userId}, 
+        {"senderId": {$in: targetUsers}}
+      ]},
+      {"isRead": true}
+      ).exec();
   }
 };
 

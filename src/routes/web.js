@@ -60,6 +60,7 @@ let configRoutes = (app) => {
 	router.delete("/contact/remove-request-contact", auth.checkLoggedIn, contact.removeRequestContact);
 
 	router.get("/notification/raed-more", auth.checkLoggedIn, notif.readMore);
+	router.put("/notification/mark-all-as-read", auth.checkLoggedIn, notif.markAllAsRead);
 
 	return app.use("/", router);
 };
