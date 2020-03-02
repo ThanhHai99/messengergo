@@ -5,7 +5,7 @@ let register = [
   check("email", transValidation.email_incorrect)
     .isEmail()
     .trim(),
-    check("dislayName", transValidation.dislayName_incorrect)
+    check("displayName", transValidation.displayName_incorrect)
     .isLength({ min: 4 }),
   check("gender", transValidation.gender_incorrect)
     .isIn(["male", "female"]),

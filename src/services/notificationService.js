@@ -1,7 +1,7 @@
 import NotificationModel from "./../models/notificationModel";
 import UserModel from "./../models/userModel";
 
-const LIMIT_NUMBER_TAKEN = 1;
+const LIMIT_NUMBER_TAKEN = 5;
 
 /**
  * Get notification when refresh page

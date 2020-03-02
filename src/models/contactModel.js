@@ -45,6 +45,93 @@ ContactSchema.statics = {
     return this.remove({
       $and: [{"userId": userId}, {"contactId": contactId}]
     }).exec();
+  },
+
+  /**
+   * get contacts by userId and limit
+   * @param {String} userId 
+   * @param {Number} limit 
+   */
+  getContacts(userId, limit) {
+    return this.find({
+      $and: [
+        {$or: [
+          {"userId": userId},
+          {"contactId": userId}
+        ]},
+        {"status": true}
+      ]
+    }).sort({"createAt": -1}).limit(limit).exec();
+  },
+
+  /**
+   * Get contacts sent by userId and limit
+   * @param {String} userId 
+   * @param {Number} limit 
+   */
+  getContactsSent(userId, limit) {
+    return this.find({
+      $and: [
+        {"userId": userId},
+        {"status": false}
+      ]
+    }).sort({"createAt": -1}).limit(limit).exec();
+  },
+
+  /**
+   * Get contact received by userId and limit
+   * @param {String} userId 
+   * @param {Number} limit 
+   */
+  getContactsReceived(userId, limit) {
+    return this.find({
+      $and: [
+        {"contactId": userId},
+        {"status": false}
+      ]
+    }).sort({"createAt": -1}).limit(limit).exec();
+  },
+
+  /**
+   * count contacts by userId
+   * @param {String} userId 
+   */
+  countAllContacts(userId) {
+    return this.count({
+      $and: [
+        {$or: [
+          {"userId": userId},
+          {"contactId": userId}
+        ]},
+        {"status": true}
+      ]
+    }).exec();
+  },
+
+  /**
+   * count all contacts sent by userId
+   * @param {String} userId 
+   */
+  countAllContactsSent(userId, limit) {
+    return this.count({
+      $and: [
+        {"userId": userId},
+        {"status": false}
+      ]
+    }).exec();
+  },
+
+  /**
+   * count all contact received by userId
+   * @param {String} userId 
+   */
+  countAllContactsReceived(userId, limit) {
+    return this.count({
+      $and: [
+        {"contactId": userId},
+        {"status": false}
+      ]
+    }).exec();
   }
 };
 

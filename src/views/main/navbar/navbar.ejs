@@ -33,7 +33,13 @@
                 <li>
                     <a href="#contactsModal" data-toggle="modal" title="Quản lý liên lạc" id="show-modal-contacts">
                         <i class="fa fa-user-plus"></i>
-                        <div class="noti_contact_counter" display="block"></div>
+                        <% if((countAllContactsSent + countAllContactsReceived) > 0) { %>
+                            <div class="noti_contact_counter">
+                                <%= (countAllContactsSent + countAllContactsReceived) %>
+                            </div>
+                        <% } else { %>
+                            <div class="noti_contact_counter display-none"></div>
+                        <% }; %>
                     </a>
                 </li>
                 <li>
@@ -69,7 +75,7 @@
                 <li class="dropdown" id="dropdown-navbar-user" data-uid="user._id">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <img id="navbar-avatar" class="avatar-small" src="images/users/<%=user.avatar%>" alt="">
-                        <span id="navbar-username"><%= user.dislayName %></span>
+                        <span id="navbar-username"><%= user.displayName %></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
