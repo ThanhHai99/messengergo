@@ -1,6 +1,6 @@
 const transValidation = {
   email_incorrect: "Email không hợp lệ.",
-  dislayName_incorrect: "Tên hiển thị quá ngắn.",
+  displayName_incorrect: "Tên hiển thị quá ngắn.",
   gender_incorrect: "Sao giới tính lại bị sai nhỉ?",
   password_incorrect: "Mật khẩu không hợp lệ.",
   password_new_incorrect: "Mật khẩu mới không hợp lệ.",

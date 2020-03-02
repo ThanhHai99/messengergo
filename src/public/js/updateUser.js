@@ -190,7 +190,7 @@ function callUpdateUserAvatar() {
 		processData: false,
 		data: userAvatar,
 		success: function(result) {
-			// Dislay success
+			// Display success
 			$(".user-modal-alert-success").find("span").text(result.message);
 			$(".user-modal-alert-success").css("display", "block");
 
@@ -204,7 +204,7 @@ function callUpdateUserAvatar() {
 			$("#input-btn-cancel-update-user").click();
 		 },
 		error: function(error) { 
-			// Dislay error
+			// Display error
 			$(".user-modal-alert-error").find("span").text(error.responseText);
 			$(".user-modal-alert-error").css("display", "block");
 
@@ -220,7 +220,7 @@ function callUpdateUserInfo() {
 		type: "put", //khi update data
 		data: userInfo,
 		success: function(result) {
-			// Dislay success
+			// Display success
 			$(".user-modal-alert-success").find("span").text(result.message);
 			$(".user-modal-alert-success").css("display", "block");
 
@@ -234,7 +234,7 @@ function callUpdateUserInfo() {
 			$("#input-btn-cancel-update-user").click();
 		 },
 		error: function(error) { 
-			// Dislay error
+			// Display error
 			$(".user-modal-alert-error").find("span").text(error.responseText);
 			$(".user-modal-alert-error").css("display", "block");
 
@@ -250,7 +250,7 @@ function callUpdateUserPassword() {
 		type: "put", //khi update data
 		data: userUpdatePassword,
 		success: function(result) {
-			// Dislay success
+			// Display success
 			$(".user-modal-password-alert-success").find("span").text(result.message);
 			$(".user-modal-password-alert-success").css("display", "block");
 
@@ -262,7 +262,7 @@ function callUpdateUserPassword() {
 			
 		 },
 		error: function(error) { 
-			// Dislay error
+			// Display error
 			$(".user-modal-password-alert-error").find("span").text(error.responseText);
 			$(".user-modal-password-alert-error").css("display", "block");
 

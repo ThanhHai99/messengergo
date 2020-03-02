@@ -1,9 +1,9 @@
 let keyword = null;
 let callFindUsers = () => {
   $.get(`/contact/find-users/${keyword}`, function(data){
-    $(".contactList").html("");
+    $(".contactList", "div#find-user").html("");
 		// $(".contactList").prepend(data);
-    $(".contactList").html(data);
+    $(".contactList", "div#find-user").html(data);
     addContact(); // js/addContact.js
     removeRequestContact(); // js/removeRequestContact.js
   });
@@ -16,7 +16,7 @@ $(document).ready(() => {
       callFindUsers();
     }
     else {
-      $(".contactList").html("");
+      $(".contactList", "div#find-user").html("");
     }
   });
   
@@ -26,7 +26,7 @@ $(document).ready(() => {
       callFindUsers();
     }
     else{
-      $(".contactList").html("");
+      $(".contactList", "div#find-user").html("");
       alertify.notify("Nhập vào tên người dùng để tìm kiếm!", "error", 5);
     }
   });
