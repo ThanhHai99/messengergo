@@ -2,7 +2,6 @@ let keyword = null;
 let callFindUsers = () => {
   $.get(`/contact/find-users/${keyword}`, function(data){
     $(".contactList", "div#find-user").html("");
-		// $(".contactList").prepend(data);
     $(".contactList", "div#find-user").html(data);
     addContact(); // js/addContact.js
     removeRequestContact(); // js/removeRequestContact.js

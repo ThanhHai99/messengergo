@@ -58,8 +58,11 @@ let configRoutes = (app) => {
 	router.get("/contact/find-users/:keyword", auth.checkLoggedIn, contact.findUsersContact);
 	router.post("/contact/add-new", auth.checkLoggedIn, contact.addNew);
 	router.delete("/contact/remove-request-contact", auth.checkLoggedIn, contact.removeRequestContact);
+	router.get("/contact/read-more-contacts", auth.checkLoggedIn, contact.readMoreContacts);
+	router.get("/contact/read-more-contacts-sent", auth.checkLoggedIn, contact.readMoreContactsSent);
+	router.get("/contact/read-more-contacts-received", auth.checkLoggedIn, contact.readMoreContactsReceived);
 
-	router.get("/notification/raed-more", auth.checkLoggedIn, notif.readMore);
+	router.get("/notification/read-more", auth.checkLoggedIn, notif.readMore);
 	router.put("/notification/mark-all-as-read", auth.checkLoggedIn, notif.markAllAsRead);
 
 	return app.use("/", router);

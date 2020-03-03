@@ -1292,10 +1292,7 @@ label:focus,
   text-align: center;
 }
 
-.read-more-notif-loader,
-.read-more-contacts-loader,
-.read-more-contacts-sent-loader,
-.read-more-contacts-received-loader {
+.read-more-notif-loader {
   display: none;
   position: relative;
   width: 80px;
@@ -1303,10 +1300,7 @@ label:focus,
   margin-top: 10px;
 }
 
-.read-more-notif-loader:after,
-.read-more-contacts-loader:after,
-.read-more-contacts-sent-loader:after,
-.read-more-contacts-received-loader:after {
+.read-more-notif-loader:after {
   content: " ";
   display: block;
   border-radius: 50%;
@@ -1319,46 +1313,6 @@ label:focus,
   animation: read-more-notif-loader 1.2s infinite;
 }
 @keyframes read-more-notif-loader {
-  0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  100% {
-    transform: rotate(1800deg);
-  }
-}
-
-@keyframes read-more-contacts-loader {
-  0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  100% {
-    transform: rotate(1800deg);
-  }
-}
-@keyframes read-more-contacts-sent-loader {
-  0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  100% {
-    transform: rotate(1800deg);
-  }
-}
-@keyframes read-more-contacts-received-loader {
   0% {
     transform: rotate(0);
     animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
@@ -1425,5 +1379,39 @@ label:focus,
   }
   100% {
     transform: scale(0.9);
+  }
+}
+
+.read-more-contacts-loader {
+  display: none;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.read-more-contacts-loader:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 32px solid #2ecc71;
+  border-color: #2ecc71 transparent #2ecc71 transparent;
+  animation: read-more-contacts-loader 1.2s infinite;
+}
+@keyframes read-more-contacts-loader {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
   }
 }
