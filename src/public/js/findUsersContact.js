@@ -1,17 +1,16 @@
-let keyword = null;
-let callFindUsers = () => {
-  $.get(`/contact/find-users/${keyword}`, function(data){
-    $(".contactList", "div#find-user").html("");
-    $(".contactList", "div#find-user").html(data);
-    addContact(); // js/addContact.js
-    removeRequestContact(); // js/removeRequestContact.js
-  });
-};
-
 $(document).ready(() => {
-  $("#input-find-users-contact").bind("keyup", () => {
-    keyword = $("#input-find-users-contact").val();
-    if(keyword){
+  let callFindUsers = function() {
+    let keyword = $("#input-find-users-contact").val();
+    $.get(`/contact/find-users/${keyword}`, function(data){
+      $(".contactList", "div#find-user").html("");
+      $(".contactList", "div#find-user").html(data);
+      addContact(); // js/addContact.js
+      removeRequestContactSent(); // js/removeRequestContactSent.js
+    });
+  };
+  
+  $("#input-find-users-contact").unbind("keyup").on("keyup", function() {
+    if($("#input-find-users-contact").val()){
       callFindUsers();
     }
     else {
@@ -19,9 +18,8 @@ $(document).ready(() => {
     }
   });
   
-  $("#btn-find-users-contact").bind("click", () => {
-    keyword = $("#input-find-users-contact").val();
-    if(keyword){
+  $("#btn-find-users-contact").unbind("click").on("click", function() {
+    if($("#input-find-users-contact").val()){
       callFindUsers();
     }
     else{
