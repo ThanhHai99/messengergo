@@ -28,12 +28,13 @@ $(document).ready(function() {
                                                                 <div class="user-acccept-contact-received" data-uid="${ user._id }">
                                                                     Chấp nhận
                                                                 </div>
-                                                                <div class="user-reject-request-contact-received action-danger" data-uid="${ user._id }">
+                                                                <div class="user-remove-request-contact-received action-danger" data-uid="${ user._id }">
                                                                     Xóa yêu cầu
                                                                 </div>
                                                             </div>
                                                           </li>`); // modal notification
       });
+      removeRequestContactReceived();
       $("#link-read-more-contacts-received").css("display", "inline-block");
       $(".read-more-contacts-received-loader").css("display", "none");
     });
