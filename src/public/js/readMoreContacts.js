@@ -34,6 +34,9 @@ $(document).ready(function() {
                                             </div>
                                           </li>`); // modal notification
       });
+
+      removeContact();
+
       $("#link-read-more-contacts").css("display", "inline-block");
       $(".read-more-contacts-loader").css("display", "none");
     });
