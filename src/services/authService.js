@@ -10,7 +10,7 @@ let register = (email, displayName, gender, password, protocol, host) => {
 	return new Promise(async (resolve, reject) => {
 		let userByEmail = await UserModel.findByEmail(email);
 		if (userByEmail) {
-			if (userByEmail.deleteAt != null) {
+			if (userByEmail.deletedAt != null) {
 				return reject(transErrors.account_removed);
 			}
 			if (!userByEmail.local.isActive) {

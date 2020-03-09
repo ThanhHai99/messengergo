@@ -6,9 +6,9 @@ let ContactSchema = new Schema({
   userId: String,
   contactId: String,
   status: { type: Boolean, default: false },
-  createAt: { type: Number, default: Date.now },
-  updateAt: { type: Number, default: null },
-  deleteAt: { type: Number, default: null }
+  createdAt: { type: Number, default: Date.now },
+  updatedAt: { type: Number, default: null },
+  deletedAt: { type: Number, default: null }
 });
 
 ContactSchema.statics = {
@@ -84,7 +84,9 @@ ContactSchema.statics = {
         {"userId": contactId},
         {"status": false}
       ]
-    }, {"status": true}).exec();
+    }, {"status": true,
+        "updatedAt": Date.now()
+      }).exec();
   },
 
   /**
@@ -101,7 +103,7 @@ ContactSchema.statics = {
         ]},
         {"status": true}
       ]
-    }).sort({"createAt": -1}).limit(limit).exec();
+    }).sort({"updatedAt": -1}).limit(limit).exec();
   },
 
   /**
@@ -115,7 +117,7 @@ ContactSchema.statics = {
         {"userId": userId},
         {"status": false}
       ]
-    }).sort({"createAt": -1}).limit(limit).exec();
+    }).sort({"createdAt": -1}).limit(limit).exec();
   },
 
   /**
@@ -129,7 +131,7 @@ ContactSchema.statics = {
         {"contactId": userId},
         {"status": false}
       ]
-    }).sort({"createAt": -1}).limit(limit).exec();
+    }).sort({"createdAt": -1}).limit(limit).exec();
   },
 
   /**
@@ -183,7 +185,7 @@ ContactSchema.statics = {
         ]},
         {"status": true}
       ]
-    }).sort({"createAt": -1}).skip(skip).limit(limit).exec();
+    }).sort({"updatedAt": -1}).skip(skip).limit(limit).exec();
   },
   
   readMoreContactsSent(userId, skip, limit) {
@@ -192,7 +194,7 @@ ContactSchema.statics = {
         {"userId": userId},
         {"status": false}
       ]
-    }).sort({"createAt": -1}).skip(skip).limit(limit).exec();
+    }).sort({"createdAt": -1}).skip(skip).limit(limit).exec();
   },
   
   readMoreContactsReceived(userId, skip, limit) {
@@ -201,7 +203,7 @@ ContactSchema.statics = {
         {"contactId": userId},
         {"status": false}
       ]
-    }).sort({"createAt": -1}).skip(skip).limit(limit).exec();
+    }).sort({"createdAt": -1}).skip(skip).limit(limit).exec();
   }
 };
 
