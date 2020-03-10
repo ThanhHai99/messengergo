@@ -9,12 +9,12 @@ let MessageSchema = new Schema({
   sender: {
     id: String,
     username: String,
-    avartar: String
+    avatar: String
   },
   receiver: {
     id: String,
     username: String,
-    avartar: String
+    avatar: String
   },
   text: String,
   file: { data: Buffer, contentType: String, fileName: String },

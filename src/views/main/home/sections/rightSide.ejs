@@ -1,12 +1,12 @@
 <div class="col-sm-9 sidenav no-padding">
     <div class="tab-content" id="screen-chat">
-        <% allConversations.forEach(function (conversation, index) { %>
+        <% allConversationWithMessages.forEach(function (conversation, index) { %>
             <% if (conversation.members) { %>
                 <div class="right tab-pane <%if (index === 0) { %> active <% }; %>" data-chat="<%= conversation._id %>" id="to_<%= conversation._id %>">
                     <div class="top">
                         <span>To: <span class="name"><%= conversation.name %></span></span>
                         <span class="chat-menu-right">
-                            <a href="#attachsModal" id="show-attachs" data-toggle="modal">
+                            <a href="#attachsModal_<%= conversation._id %>" class="show-attachs" data-toggle="modal">
                                 Tệp đính kèm
                                 <i class="fa fa-paperclip"></i>
                             </a>
@@ -15,7 +15,7 @@
                             <a href="javascript:void(0)">&nbsp;</a>
                         </span>
                         <span class="chat-menu-right">
-                            <a href="#imagesModal" id="show-images" data-toggle="modal">
+                            <a href="#imagesModal_<%= conversation._id %>" class="show-images" data-toggle="modal">
                                 Hình ảnh
                                 <i class="fa fa-photo"></i>
                             </a>
@@ -23,19 +23,19 @@
                     </div>
                     <div class="content-chat">
                         <div class="chat" data-chat="<%= conversation._id %>">
-                            <% conversation.messages.forEach(function (message) { %>
+                            <% conversation.messages.forEach(function(message) { %>
                                 <% if (message.messageType === "text") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %>" data-mess-id="<%= message._id %>">
                                         <img src="/images/users/<%= message.sender.avatar %>" class="avatar-small">
                                         <%= message.text %>
                                     </div>
-                                <%} %>
+                                <% }; %>
                                 <% if (message.messageType === "image") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %> bubble-image-file" data-mess-id="<%= message._id %>">
                                         <img src="/images/users/<%= message.sender.avatar %>" class="avatar-small">
                                         <img src="data:<%= message.file.contentType %>; base64, <%= bufferToBase64(message.file.data) %>" class="show-image-chat">
                                     </div>
-                                <%} %>
+                                <% }; %>
                                 <% if (message.messageType === "file") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %> bubble-image-file" data-mess-id="<%= message._id %>">
                                         <img src="/images/users/<%= message.sender.avatar %>" class="avatar-small">
@@ -43,7 +43,7 @@
                                             <%= message.file.fileName %>
                                         </a>
                                     </div>
-                                <%} %>
+                                <% }; %>
                                 
                             <% }); %>
                         </div>
@@ -68,11 +68,11 @@
                     </div>                    
                 </div>
             <% } else { %>
-                <div class="right tab-pane <%if (index === 0) { %> active <% }; %>" data-chat="<%= conversation._id %>" id="to_<%= conversation._id %>">
+                <div class="right tab-pane <% if (index === 0) { %> active <% }; %>" data-chat="<%= conversation._id %>" id="to_<%= conversation._id %>">
                     <div class="top">
                         <span>To: <span class="name"><%= conversation.username %></span></span>
                         <span class="chat-menu-right">
-                            <a href="#attachsModal" id="show-attachs" data-toggle="modal">
+                            <a href="#attachsModal_<%= conversation._id %>" class="show-attachs" data-toggle="modal">
                                 Tệp đính kèm
                                 <i class="fa fa-paperclip"></i>
                             </a>
@@ -81,7 +81,7 @@
                             <a href="javascript:void(0)">&nbsp;</a>
                         </span>
                         <span class="chat-menu-right">
-                            <a href="#imagesModal" id="show-images" data-toggle="modal">
+                            <a href="#imagesModal_<%= conversation._id %>" class="show-images" data-toggle="modal">
                                 Hình ảnh
                                 <i class="fa fa-photo"></i>
                             </a>
@@ -89,25 +89,24 @@
                     </div>
                     <div class="content-chat">
                         <div class="chat" data-chat="<%= conversation._id %>">
-                            <% conversation.messages.forEach(function (message) { %>
+                            <% conversation.messages.forEach(function(message) { %>
                                 <% if (message.messageType === "text") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %>" data-mess-id="<%= message._id %>">
                                         <%= message.text %>
                                     </div>
-                                <%} %>
+                                <% }; %>
                                 <% if (message.messageType === "image") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %> bubble-image-file" data-mess-id="<%= message._id %>">
                                         <img src="data:<%= message.file.contentType %>; base64, <%= bufferToBase64(message.file.data) %>" class="show-image-chat">
                                     </div>
-                                <%} %>
+                                <% }; %>
                                 <% if (message.messageType === "file") { %>
                                     <div class="bubble <% if(message.senderId == user._id) { %> me <% } else { %> you <% }; %> bubble-image-file" data-mess-id="<%= message._id %>">
                                         <a href="data:<%= message.file.contentType %>; base64, <%= bufferToBase64(message.file.data) %>" download="<%= message.file.fileName %>">
                                             <%= message.file.fileName %>
                                         </a>
                                     </div>
-                                <%} %>
-                                
+                                <% }; %>
                             <% }); %>
                         </div>
                     </div>
