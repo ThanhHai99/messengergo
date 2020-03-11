@@ -19,10 +19,11 @@ function textAndEmojiChat(divId) {
 
       //call send message
       $.post("/message/add-new-text-emoji", dataTextEmojiForSend, function(data) {
-        //success
-        console.log(data.message);
+        let messageOfMe = $(`<div class="bubble me data-mess-id="<%= message._id %>">${data.message._id}</div>`);
+        if (dataTextEmojiForSend.isChatGroup) {
+          messageOfMe.html(`<img src="/images/users/${data.message._id}" class="avatar-small" title="<%= message.sender.name %>">`);
+        }
       }).fail(function(response) {
-        //error
         alertify.notify(response.responseText, "error", 7);
       });
     }

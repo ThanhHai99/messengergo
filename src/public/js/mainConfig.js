@@ -176,15 +176,26 @@ function changeTypeChat() {
 
 function changeScreenChat() {
   $(".room-chat").unbind("click").on("click", function() {
+    let divId = $(this).find("li").data("chat");
+
     $(".person").removeClass("active");
-    $(this).find("li").addClass("active");
+    $(`.person[data-chat = ${divId}]`).addClass("active");
     $(this).tab("show");
 
-    let divId = $(this).find("li").data("chat");
+    // Cấu hình thanh cuộn bên box chat rightSide.ejs mỗi khi click vào 1 cuộc trò chuyện
     nineScrollRight(divId);
 
     // Bật emoji, tham số truyền vào là id của box nhập nội dung tin nhắn
     enableEmojioneArea(divId);
+  });
+}
+
+function convertEmoji() {
+  $(".convert-emoji").each(function() {
+    var original = $(this).html();
+    // use .shortnameToImage if only converting shortnames (for slightly better performance)
+    var converted = joypixels.shortnameToImage(original);
+    $(this).html(converted);
   });
 }
 
@@ -216,6 +227,9 @@ $(document).ready(function() {
 
   //Thay đổi kiểu trò chuyện
   changeTypeChat();
+
+  // convert các unicode thành hình ảnh cảm xúc
+  convertEmoji();
   
   // Thay đổi màn hình chat
   changeScreenChat();
