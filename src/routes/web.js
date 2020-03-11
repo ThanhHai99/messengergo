@@ -1,7 +1,7 @@
 import express from "express";
-import { auth, home, user, contact, notif } from "./../controllers/index";
+import { auth, home, user, contact, notif, message } from "./../controllers/index";
 import {initPassportLocal, initPassportGoogle, initPassportFacebook} from "./../controllers/passportController/index";
-import { authValid, userValid, contactValid } from "./../validation/index";
+import { authValid, userValid, messageValid } from "./../validation/index";
 import passport from "passport";
 
 //Init all passport
@@ -132,6 +132,11 @@ let configRoutes = (app) => {
 	router.put("/notification/mark-all-as-read",
 		auth.checkLoggedIn,
 		notif.markAllAsRead);
+
+	router.post("/message/add-new-text-emoji",
+		auth.checkLoggedIn,
+		messageValid.checkMessageLength,
+		message.addNewTextEmoji);
 
 	return app.use("/", router);
 };

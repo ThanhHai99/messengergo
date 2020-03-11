@@ -9,7 +9,8 @@ const transValidation = {
   update_gender: "Oops! Wow bạn là hacker à!!!",
   update_address: "Địa chỉ giới hạn 3-30 ký tự.",
   update_phone: "Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự.",
-  find_user: "Nhập tên người dùng để tìm kiếm."
+  find_user: "Nhập tên người dùng để tìm kiếm.",
+  message_text_emoji_incorrect: "Tin nhắn không hợp lệ."
 };
 
 const transErrors = {
@@ -22,7 +23,8 @@ const transErrors = {
   server_error: "Có lỗi ở phía server. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi để báo cáo lỗi này, xin cảm ơn.",
   avatar_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
   avatar_size: "Chi cho phep anh toi da la 1MB.",
-  user_current_password_failed: "Mật khẩu hiện tại không chính xác"
+  user_current_password_failed: "Mật khẩu hiện tại không chính xác",
+  conversation_not_found: "Cuộc trò chuyện không tồn tại."
 };
 
 const transSuccess = {
