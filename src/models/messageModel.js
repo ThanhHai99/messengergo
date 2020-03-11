@@ -25,6 +25,14 @@ let MessageSchema = new Schema({
 
 MessageSchema.statics = {
   /**
+   * Create new Message
+   * @param {*} item 
+   */
+  createNew(item) {
+    return this.create(item);
+  },
+
+  /**
    * Get message personal case and limited 15 Item per times.
    * @param {String} senderId CureentUserId
    * @param {String} receiverId 
@@ -61,7 +69,7 @@ MessageSchema.statics = {
 }
 
 const MESSAGE_CONVERSATION_TYPES = {
-  PERSIONAL: "persional",
+  PERSONAL: "personal",
   GROUP: "group"
 }
 
