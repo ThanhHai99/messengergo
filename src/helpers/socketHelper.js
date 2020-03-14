@@ -8,7 +8,9 @@ let pushSocketIdToArray = (clients, userId, socketId) => {
 };
 
 let emitNotifyToArray = (clients, userId, io, eventName, data) => {
-  clients[userId].forEach(socketId => io.sockets.connected[socketId].emit(eventName, data));
+  clients[userId].forEach((socketId) => {
+    return io.sockets.connected[socketId].emit(eventName, data)
+  });
 };
 
 let removeSocketIdFromArray = (clients, userId, socket) => {
