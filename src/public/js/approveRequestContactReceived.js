@@ -13,10 +13,10 @@ function approveRequestContactReceived() {
           $(userInfo).find("div.contactPanel")
             .append(`
               <div class="user-talk" data-uid=${targetId}">
-              Trò chuyện
+                Trò chuyện
               </div>
               <div class="user-remove-contact action-danger" data-uid=${targetId}">
-              Xóa liên hệ
+                Xóa liên hệ
               </div>
             `);
           let userInfoHtml = userInfo.get(0).outerHTML;
@@ -84,4 +84,3 @@ socket.on("response-approve-request-contact-received", function(user){
 $(document).ready(function() {
   approveRequestContactReceived();
 });
-
