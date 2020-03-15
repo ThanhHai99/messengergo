@@ -24,7 +24,9 @@ const transErrors = {
   avatar_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
   avatar_size: "Chi cho phep anh toi da la 1MB.",
   user_current_password_failed: "Mật khẩu hiện tại không chính xác",
-  conversation_not_found: "Cuộc trò chuyện không tồn tại."
+  conversation_not_found: "Cuộc trò chuyện không tồn tại.",
+  image_message_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
+  image_message_size: "Chi cho phep anh toi da la 1MB.",
 };
 
 const transSuccess = {
