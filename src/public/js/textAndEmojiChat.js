@@ -123,8 +123,8 @@ $(document).ready(function() {
     });
     $(`.person[data-chat=${divId}]`).trigger("thanhhai.moveConversationToTheTop");
 
-    // 6.Emit realtime: nothing to code
-    // 7.Emit remove typing real-time: nothing to code
-    // 8.If exists typing, remove right now: nothing to code
+    // 6.Emit realtime: nothing to code ><
+    // 7.Emit remove typing real-time: nothing to code ><
+    // 8.If exists typing, remove right now: nothing to code ><
   });
 });
