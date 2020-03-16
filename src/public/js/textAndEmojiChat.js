@@ -25,7 +25,7 @@ function textAndEmojiChat(divId) {
         };
 
         // 1.Handle data message before show
-        let messageOfMe = $(`<div class="bubble me data-mess-id="${data.message._id}"></div>`);
+        let messageOfMe = $(`<div class="bubble me" data-mess-id="${data.message._id}"></div>`);
         messageOfMe.text(data.message.text);
         let convertEmojiMessage = emojione.toImage(messageOfMe.html());
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
   socket.on("response-chat-text-emoji", function(response) {
     let divId = "";
     // 1.Handle data message before show
-    let messageOfYou = $(`<div class="bubble you data-mess-id="${response.message._id}"></div>`);
+    let messageOfYou = $(`<div class="bubble you" data-mess-id="${response.message._id}"></div>`);
     messageOfYou.text(response.message.text);
     let convertEmojiMessage = emojione.toImage(messageOfYou.html());
 

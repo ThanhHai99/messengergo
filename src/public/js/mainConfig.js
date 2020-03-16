@@ -100,20 +100,20 @@ function configNotification() {
 function gridPhotos(layoutNumber) {
   $(".show-images").unbind("click").on("click", function() {
     let href = $(this).attr("href");
-    let modalImagesId = href.replay("#", "");
+    let modalImagesId = href.replace("#", "");
+
+    let originDataImage = $(`#${modalImagesId}`).find("div.modal-body").html();
     
     let countRows = Math.ceil($(`#${modalImagesId}`).find("div.all-images>img").length / layoutNumber);
     let layoutStr = new Array(countRows).fill(layoutNumber).join("");
 
-    $(`#${modalImagesId}`)
-      .find("div.all-images")
-      .photosetGrid({
+    $(`#${modalImagesId}`).find("div.all-images").photosetGrid({
         highresLinks: true,
         rel: "withhearts-gallery",
         gutter: "2px",
         layout: layoutStr,
         onComplete: function() {
-          $(`#${modalImagesId}`).find("all-amages").css({
+          $(`#${modalImagesId}`).find(".all-images").css({
             visibility: "visible"
           });
           $(`#${modalImagesId}`).find(".all-images a").colorbox({
@@ -123,6 +123,11 @@ function gridPhotos(layoutNumber) {
             maxWidth: "90%"
           });
         }
+      });
+
+      // Bắt sự kiện đống modal
+      $(`#${modalImagesId}`).on("hidden.bs.modal", function() {
+        $(this).find("div.modal-body").html(originDataImage);
       });
   });
 }
