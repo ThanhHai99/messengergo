@@ -9,6 +9,8 @@ import configRoutes from "./routes/web";
 import http from "http";
 import socketio from "socket.io";
 import initSockets from "./sockets/index";
+import events from "events";
+import * as configApp from "./config/app";
 
 // import passportSocketIo from "passport.socketio";
 import cookieParser from "cookie-parser";
@@ -17,6 +19,9 @@ import configSocket from "./config/socketio";
 
 //Init app
 const app = express();
+
+//Set max connection event listener
+events.EventEmitter.defaultMaxListeners = configApp.app.max_event_listeners;
 
 //Init server with socket.io & express app
 let server = http.createServer(app);

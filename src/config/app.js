@@ -1,4 +1,5 @@
 const app = {
+  max_event_listeners: 30,
   avatar_directory: "src/public/images/users",
   avatar_type: ["image/png", "image/jpg", "image/jpeg"],
   avatar_limit_size: 1048576, //byte = 1MB
