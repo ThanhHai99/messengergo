@@ -204,6 +204,9 @@ function changeScreenChat() {
     
     // Bật lắng nghe DOM cho chat tin nhắn file
     attachmentChat(divId);
+    
+    // Bật lắng nghe chat video
+    videoChat(divId);
   });
 }
 
@@ -255,4 +258,8 @@ $(document).ready(function() {
   changeScreenChat();
 
   $("ul.people").find("a")[0].click();
+
+  $("#video-chat-group").bind("click", function() {
+    alertify.notify("Không khả dụng tính năng này với nhóm trò chuyện, vui lòng thử lại với trò chuyện cá nhân.", "error", 7);
+  });
 });
