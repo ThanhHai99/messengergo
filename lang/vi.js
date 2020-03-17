@@ -5,7 +5,7 @@ const transValidation = {
   password_incorrect: "Mật khẩu không hợp lệ.",
   password_new_incorrect: "Mật khẩu mới không hợp lệ.",
   password_confirmation_incorrect: "Mật khẩu nhập lại không hợp lệ.",
-  update_username: "Username gioi han trong khoang 3-17 ky tu khong chua ky tu dac biet.",
+  update_username: "Username giới hạn trong khoảng 3-17 ký tự không chứa ký tự đặc biệt.",
   update_gender: "Oops! Wow bạn là hacker à!!!",
   update_address: "Địa chỉ giới hạn 3-30 ký tự.",
   update_phone: "Số điện thoại bắt đầu bằng số 0, giới hạn khoảng 10-11 ký tự.",
@@ -21,12 +21,14 @@ const transErrors = {
   token_undefined: "Token không tồn tại!",
   login_failed: "Sai mật khẩu hoặc tài khoản!",
   server_error: "Có lỗi ở phía server. Vui lòng liên hệ với bộ phận hỗ trợ của chúng tôi để báo cáo lỗi này, xin cảm ơn.",
-  avatar_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
-  avatar_size: "Chi cho phep anh toi da la 1MB.",
+  avatar_type: "Kiểu file không hợp lệ, chỉ chấp nhận jpg & png.",
+  avatar_size: "Chỉ cho phép ảnh tối đa là 1MB.",
   user_current_password_failed: "Mật khẩu hiện tại không chính xác",
   conversation_not_found: "Cuộc trò chuyện không tồn tại.",
-  image_message_type: "Kieu file khong hop le, chi chap nhan jpg & png.",
-  image_message_size: "Chi cho phep anh toi da la 1MB.",
+  image_message_type: "Kiểu file không hợp lệ, chỉ chấp nhận jpg & png.",
+  image_message_size: "Chỉ cho phép ảnh tối đa là 1MB.",
+  attachment_message_type: "Kiểu file không hợp lệ, chỉ chấp nhận jpg & png.",
+  attachment_message_size: "Chỉ cho phép file tối đa là 1MB.",
 };
 
 const transSuccess = {
