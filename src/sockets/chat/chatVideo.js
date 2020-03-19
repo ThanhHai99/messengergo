@@ -17,11 +17,53 @@ let chatVideo = (io) => {
           listenerId: data.listenerId,
           callerName: data.callerName
         };
-        emitNotifyToArray(clients, data.listener, io, "server-request-peer-id-of-listener", response);
+        emitNotifyToArray(clients, data.listenerId, io, "server-request-peer-id-of-listener", response);
 
       } else {
         // offline
         socket.emit("server-send-listener-is-offline");
+      }
+    });
+
+    socket.on("listener-emit-peer-id-to-server", (data) => {
+      let response = {
+        callerId: data.callerId,
+        listenerId: data.listenerId,
+        callerName: data.callerName,
+        listenerName: data.listenerName,
+        listenerPeerId: data.listenerPeerId
+      };
+      
+      if (clients[data.callerId]) {
+        emitNotifyToArray(clients, data.callerId, io, "server-send-peer-id-of-listener-to-caller", response);
+      }
+    });
+
+    socket.on("caller-request-call-to-server", (data) => {
+      let response = {
+        callerId: data.callerId,
+        listenerId: data.listenerId,
+        callerName: data.callerName,
+        listenerName: data.listenerName,
+        listenerPeerId: data.listenerPeerId
+      };
+      
+      if (clients[data.listenerId]) {
+        emitNotifyToArray(clients, data.listenerId, io, "server-send-request-call-to-listener", response);
+      }
+    });
+
+    socket.on("caller-cancel-request-call-to-server", (data) => {
+      let response = {
+        callerId: data.callerId,
+        listenerId: data.listenerId,
+        callerName: data.callerName,
+        listenerName: data.listenerName,
+        listenerPeerId: data.listenerPeerId
+      };
+      
+      if (clients[data.listenerId]) {
+        emitNotifyToArray(clients, data.listenerId, io, "server-send-cancel-request-call-to-listener", response);
       }
     });
 
@@ -34,3 +76,4 @@ let chatVideo = (io) => {
   });
 };
 
+module.exports = chatVideo;
