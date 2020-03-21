@@ -9,7 +9,7 @@ let connectDB = () => {
 	// let URI = `mongodb+srv://thanhhai:thanhhai3303703@cluster0-amayj.mongodb.net/test?retryWrites=true&w=majority`;
 	let URI = process.env.MONGO_URI;
 	// let client = new MongoClient(URI, { useNewUrlParser: true });
-	return mongoose.connect(URI, { useMongoClient: true });
+	return mongoose.connect(URI, { useMongoClient: true, useNewUrlParser: true });
 };
 
 module.exports = connectDB;
