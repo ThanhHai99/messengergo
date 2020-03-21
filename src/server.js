@@ -50,6 +50,9 @@ configSocket(io);
 
 initSockets(io);
 
-server.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
-  console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
+// server.listen(process.env.APP_PORT, process.env.APP_HOST, () =>
+//   console.log(`App running at ${process.env.APP_HOST}:${process.env.APP_PORT}`)
+// );
+server.listen(process.env.PORT, () =>
+  console.log(`App running at : ${process.env.PORT}`)
 );
