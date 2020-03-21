@@ -5,7 +5,8 @@ let MongoStore = connectMongo(session);
 
 let sessionStore = new MongoStore({
 	// url: `${process.env.DB_CONNECTION}://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`,
-	url: `mongodb+srv://thanhhai:thanhhai3303703@cluster0-amayj.mongodb.net/test?retryWrites=true&w=majority`,
+	// url: `mongodb+srv://thanhhai:thanhhai3303703@cluster0-amayj.mongodb.net/test?retryWrites=true&w=majority`,
+	url: process.env.MONGO_URI,
 	autoReconnect: true,
 	autoRemove: "native"
 });
