@@ -60,7 +60,7 @@ typings/
 # next.js build output
 .next
 
-# sh/env.sh
+sh/env.sh
 
 src/public/bower_components
 

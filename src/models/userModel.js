@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 let Schema = mongoose.Schema;
 let UserSchema = new Schema({
 	username: String,
-	displayName: String,
 	gender: { type: String, default: "male" },
 	phone: { type: String, default: null },
 	address: { type: String, default: null },

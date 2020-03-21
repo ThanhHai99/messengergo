@@ -1,15 +1,15 @@
 # config database environment variable
 # Run: source sh/env.sh
-# export DB_CONNECTION=mongodb
-# export DB_HOST=localhost
-# export DB_PORT=27017
-# export DB_NAME=awesome_chat
-# export DB_USERNAME=""
-# export DB_PASSWORD=""
+export DB_CONNECTION=mongodb
+export DB_HOST=localhost
+export DB_PORT=27017
+export DB_NAME=awesome_chat
+export DB_USERNAME=""
+export DB_PASSWORD=""
 
 #Config app environment variable
-# export APP_HOST=localhost
-# export APP_PORT=2303
+export APP_HOST=localhost
+export APP_PORT=2303
 
 #Config session key and secret
 export SESSION_KEY="express.sid"

@@ -1,0 +1,21 @@
+{
+  "env": {
+    "MONGO_URI": "mongodb://thanhhai:thanhhai3303703@cluster0-shard-00-00-amayj.mongodb.net:27017,cluster0-shard-00-01-amayj.mongodb.net:27017,cluster0-shard-00-02-amayj.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "APP_HOST":"localhost",
+    "SESSION_KEY":"express.sid",
+    "SESSION_SECRET":"mySecret",
+
+    "MAIL_USER":"tranhai23031999@gmail.com",
+    "MAIL_PASSWORD":"thanhhai3303703",
+    "MAIL_HOST":"smtp.gmail.com",
+    "MAIL_PORT":"587",
+
+    "FB_APP_ID":"159250902038344",
+    "FB_APP_SECRET":"8e0bc9e77ce83c6edcd68c646d8887df",
+    "FB_CALLBACK_URL":"https://localhost:2303/auth/facebook/callback",
+
+    "GG_APP_ID":"339146463147-f7r2aim0t6j9p83qm1m41fnna41qrh3a.apps.googleusercontent.com",
+    "GG_APP_SECRET":"XOmFEhvWySR7OKBhzdosQL2z",
+    "GG_CALLBACK_URL":"https://localhost:2303/auth/google/callback"
+  }
+}

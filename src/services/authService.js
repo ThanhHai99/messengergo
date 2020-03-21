@@ -6,7 +6,7 @@ import sendMail from "./../config/mailer";
 
 let saltRounds = 7;
 
-let register = (email, displayName, gender, password, protocol, host) => {
+let register = (email, gender, password, protocol, host) => {
 	return new Promise(async (resolve, reject) => {
 		let userByEmail = await UserModel.findByEmail(email);
 		if (userByEmail) {
@@ -22,7 +22,6 @@ let register = (email, displayName, gender, password, protocol, host) => {
 		let salt = bcrypt.genSaltSync(saltRounds);
 		let userItem = {
 			username: email.split("@")[0],
-			displayName: displayName,
 			gender: gender,
 			local: {
 				email: email,
