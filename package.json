@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node ./src/server.js",
+    "start": "babel-node src/server.js",
     "devstart": "npm install -g bower",
     "postinstall": "bower cache clean && bower install"
   },
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/ThanhHai99/NodeJS_Messenger#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "bcrypt": "^4.0.1",
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.2",
