@@ -1,6 +1,6 @@
 {
   "env": {
-    "MONGO_URI": "mongodb://thanhhai:thanhhai3303703@cluster0-shard-00-00-amayj.mongodb.net:27017,cluster0-shard-00-01-amayj.mongodb.net:27017,cluster0-shard-00-02-amayj.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
+    "MONGO_URI": "mongodb://thanhhai:thanhhai3303703@cluster0-shard-00-00-amayj.mongodb.net:27017,cluster0-shard-00-01-amayj.mongodb.net:27017,cluster0-shard-00-02-amayj.mongodb.net:27017/Go-Messenger?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",
     "APP_HOST":"localhost",
     "SESSION_KEY":"express.sid",
     "SESSION_SECRET":"mySecret",
