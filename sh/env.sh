@@ -6,6 +6,7 @@ export DB_PORT=27017
 export DB_NAME=awesome_chat
 export DB_USERNAME=""
 export DB_PASSWORD=""
+export DB_URI="mongodb://thanhhai:thanhhai3303703@cluster0-shard-00-00-amayj.mongodb.net:27017,cluster0-shard-00-01-amayj.mongodb.net:27017,cluster0-shard-00-02-amayj.mongodb.net:27017/Go-Messenger?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 #Config app environment variable
 export APP_HOST=localhost
