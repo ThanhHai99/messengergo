@@ -3,8 +3,7 @@ import nodeMailer from "nodemailer";
 const adminEmail = process.env.MAIL_USER;
 const adminPassword = process.env.MAIL_PASSWORD;
 const mailHost = process.env.MAIL_HOST;
-// const mailPort = process.env.MAIL_PORT;
-const mailPort = process.env.PORT;
+const mailPort = process.env.MAIL_PORT;
 
 let sendMail = (to, subject, htmlContent) => {
   let transporter = nodeMailer.createTransport({
