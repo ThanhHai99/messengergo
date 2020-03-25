@@ -31,12 +31,12 @@ const transErrors = {
 };
 
 const transSuccess = {
-  userCreated: userEmail => {
+  userCreated: (userEmail) => {
     return `Tài khoản <strong>${userEmail}</strong> đã được tạo, vui lòng kiểm tra email để active tài khoản trước khi đăng nhập, xin cảm ơn.`;
   },
   account_actived:
     "Kích hoạt tài khoản thành công, bạn đã có thể đăng nhập vào ứng dụng.",
-  loginSuccess: username => {
+  loginSuccess: (username) => {
     return `Xin chào ${username}, chúc bạn một ngày tốt lành.`;
   },
   logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!",
@@ -47,7 +47,7 @@ const transSuccess = {
 
 const transMail = {
   subject: "Messenger Go: Xác nhận kích hoạt tài khoản.",
-  template: linkVerify => {
+  template: (linkVerify) => {
     return `
             <h2>Bạn nhận được email này vì đã đăng ký tài khoản trên ứng dụng Messenger Go.</h2>
             <h3>Vui lòng click vào liên kết bên dưới để xác nhận kích hoạt tài khoản.</h3>

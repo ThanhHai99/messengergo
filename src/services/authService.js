@@ -55,7 +55,7 @@ let verifyAccount = (token) => {
 		}
 
 		await UserModel.verify(token);
-		resolve(transSuccess.account_actived);
+		return resolve(transSuccess.account_actived);
 	});
 };
 
