@@ -19,7 +19,7 @@ let initPassportFacebook = () => {
         clientSecret: fbAppSecret,
         callbackURL: fbAppCallbackUrl,
         // passReqToCallback: true,
-        profileFields: ["email", "gender", "displayName"]
+        // profileFields: ["email", "gender", "displayName"]
     }, async (req, accessToken, refreshToken, profile, done) => {
         console.log(profile);
         // try {
@@ -47,13 +47,15 @@ let initPassportFacebook = () => {
     }));
     //Save userId to session
     passport.serializeUser((user, done) => {
-        done(null, user._id);
+        // done(null, user._id);
+        done(null, user.id);
     });
 
     passport.deserializeUser(async (id, done) => {
         try {
             let user = await UserModel.findUserByIdForSessionToUse(id);
-            let getChatGroupIds = await ChatGroupModel.getChatGroupIdsByUser(user._id);
+            // let getChatGroupIds = await ChatGroupModel.getChatGroupIdsByUser(user._id);
+            let getChatGroupIds = await ChatGroupModel.getChatGroupIdsByUser(user.id);
       
             user = user.toObject();
             user.chatGroupIds = getChatGroupIds;
