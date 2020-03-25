@@ -18,7 +18,7 @@ let initPassportFacebook = () => {
         clientID: fbAppId,
         clientSecret: fbAppSecret,
         callbackURL: fbAppCallbackUrl,
-        passReqToCallback: true,
+        // passReqToCallback: true,
         profileFields: ["email", "gender", "displayName"]
     }, async (req, accessToken, refreshToken, profile, done) => {
         try {
