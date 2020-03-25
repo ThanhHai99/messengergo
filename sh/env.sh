@@ -17,8 +17,8 @@ export SESSION_KEY="express.sid"
 export SESSION_SECRET="mySecret"
 
 #Config admin email account
-export MAIL_USER=tranhai23031999@gmail.com
-export MAIL_PASSWORD=thanhhai3303703
+export MAIL_USER=messengergo2303@gmail.com
+export MAIL_PASSWORD=Aa@123456
 export MAIL_HOST=smtp.gmail.com
 export MAIL_PORT=587
 
