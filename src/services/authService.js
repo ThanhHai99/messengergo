@@ -51,7 +51,7 @@ let verifyAccount = (token) => {
 		let userByToken = await UserModel.findByToken(token);
 		if (!userByToken) {
 			// return reject(transErrors.token_undefined);
-			return reject(transSuccess.signup_success);
+			return resolve(transSuccess.signup_success);
 		}
 
 		await UserModel.verify(token);
