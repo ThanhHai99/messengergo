@@ -7,9 +7,10 @@ const mailPort = process.env.MAIL_PORT;
 
 let sendMail = (to, subject, htmlContent) => {
   let transporter = nodeMailer.createTransport({
+    service: "gmail",
     host: mailHost,
     port: mailPort,
-    secure: false, //Use SSL - TLS
+    //secure: false, //Use SSL - TLS
     auth: {
       user: adminEmail,
       pass: adminPassword
