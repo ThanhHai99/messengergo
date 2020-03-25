@@ -23,8 +23,8 @@ export MAIL_HOST=smtp.gmail.com
 export MAIL_PORT=587
 
 #Config facebook login app
-export FB_APP_ID=2546721152323579
-export FB_APP_SECRET=f80e052a96e06154aaffb8e0d4c43e80
+export FB_APP_ID=498842094127366
+export FB_APP_SECRET=b3b8079e7a054889099f00ec7a4c36da
 export FB_CALLBACK_URL=https://messengergo.herokuapp.com/auth/facebook/callback
 
 #Config google login app
