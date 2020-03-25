@@ -40,8 +40,8 @@ const transSuccess = {
     return `Xin chào ${username}, chúc bạn một ngày tốt lành.`;
   },
   logout_success: "Đăng xuất tài khoản thành công, hẹn gặp lại bạn!",
-  user_info_updated: "Cap nhat thong tin user thanh cong",
-  user_password_updated: "Cap nhat mat khau thanh cong"
+  user_info_updated: "Cập nhật thông tin người dùng thành công",
+  user_password_updated: "Cập nhật mật khẩu thành công"
 };
 
 const transMail = {

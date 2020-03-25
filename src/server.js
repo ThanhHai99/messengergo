@@ -6,7 +6,7 @@ import configViewEngine from "./config/viewEngine";
 import configFlash from "./config/connectFlash";
 import passport from "passport";
 import configRoutes from "./routes/web";
-import http from "http";
+import https from "https";
 import socketio from "socket.io";
 import initSockets from "./sockets/index";
 import events from "events";
@@ -24,7 +24,7 @@ const app = express();
 events.EventEmitter.defaultMaxListeners = configApp.app.max_event_listeners;
 
 //Init server with socket.io & express app
-let server = http.createServer(app);
+let server = https.createServer(app);
 let io = socketio(server);
 
 ConnectDB();
