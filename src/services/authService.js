@@ -50,7 +50,8 @@ let verifyAccount = (token) => {
 	return new Promise(async (resolve, reject) => {
 		let userByToken = await UserModel.findByToken(token);
 		if (!userByToken) {
-			return reject(transErrors.token_undefined);
+			// return reject(transErrors.token_undefined);
+			return reject(transSuccess.signup_success);
 		}
 
 		await UserModel.verify(token);
