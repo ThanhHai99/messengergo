@@ -15,6 +15,23 @@ let fbAppCallbackUrl = process.env.FB_APP_CALLBACK_URL;
  */
 let initPassportFacebook = () => {
     /*
+    
+    
+
+    
+    */
+
+    // passport.use(new passportFacebook({
+    //     clientID: "498842094127366",
+    //     clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
+    //     callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback"
+        
+    // }, 
+    // (accessToken, refreshToken, profile, done) => {
+    //     console.log(profile);
+    // }
+    // ))
+
     passport.use(new FacebookStratery({
         clientID: fbAppId,
         clientSecret: fbAppSecret,
@@ -45,21 +62,6 @@ let initPassportFacebook = () => {
             return done(null, false, req.flash("errors", transErrors.server_error));
         }
     }));
-    
-
-    
-    */
-
-    passport.use(new passportFacebook({
-        clientID: "498842094127366",
-        clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
-        callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback"
-        
-    }, 
-    (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-    }
-    ))
 
     // passport.serializeUser((user, done) => {
     //     console.log('ok');
