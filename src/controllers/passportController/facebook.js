@@ -45,10 +45,7 @@ let initPassportFacebook = () => {
             return done(null, false, req.flash("errors", transErrors.server_error));
         }
     }));
-    //Save userId to session
-    passport.serializeUser((user, done) => {
-        done(null, user._id);
-    });
+    
 
     
     */
@@ -64,10 +61,15 @@ let initPassportFacebook = () => {
     }
     ))
 
+    // passport.serializeUser((user, done) => {
+    //     console.log('ok');
+    //     return;
+    // })
+    
+    //Save userId to session
     passport.serializeUser((user, done) => {
-        console.log('ok');
-        return;
-    })
+        done(null, user._id);
+    });
 
     // passport.deserializeUser((id, done) => {  
     //     console.log('ok');
