@@ -33,9 +33,9 @@ let initPassportFacebook = () => {
     // ))
 
     passport.use(new FacebookStratery({
-        clientID: fbAppId,
-        clientSecret: fbAppSecret,
-        callbackURL: fbAppCallbackUrl,
+        clientID: "498842094127366",
+        clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
+        callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback",
         passReqToCallback: true,
         profileFields: ["email", "gender", "displayName"]
     }, async (req, accessToken, refreshToken, profile, done) => {
