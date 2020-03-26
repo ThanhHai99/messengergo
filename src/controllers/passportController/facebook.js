@@ -17,10 +17,15 @@ let initPassportFacebook = () => {
     passport.use(new FacebookStratery({
         clientID: "498842094127366",
         clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
-        callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback",
+        // callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback",
+        callbackURL: "https://localhost:2303/auth/facebook/callback",
         passReqToCallback: true,
         profileFields: ["email", "gender", "displayName"]
     }, async (req, accessToken, refreshToken, profile, done) => {
+        console.log("profile: ");
+        console.log(profile);
+        console.log("accessToken: " + accessToken);
+        // return;
         try {
             let user = await UserModel.findByFacebookUid(profile.id);
             if(user){
@@ -34,7 +39,7 @@ let initPassportFacebook = () => {
                 facebook:{
                     uid: profile.id,
                     token: accessToken,
-                    email: profile.emails[0].value
+                    // email: profile.emails[0].value
                 }
             };
             let newUser = await UserModel.createNew(newUserItem);
@@ -44,21 +49,12 @@ let initPassportFacebook = () => {
             return done(null, false, req.flash("errors", transErrors.server_error));
         }
     }));
-
-    // passport.serializeUser((user, done) => {
-    //     console.log('ok');
-    //     return;
-    // })
     
     //Save userId to session
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });
 
-    // passport.deserializeUser((id, done) => {  
-    //     console.log('ok');
-    //     return;
-    // })
     passport.deserializeUser(async (id, done) => {
         try {
             let user = await UserModel.findUserByIdForSessionToUse(id);
