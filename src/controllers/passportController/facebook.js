@@ -18,7 +18,7 @@ let initPassportFacebook = () => {
         clientID: "498842094127366",
         clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
         // callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback",
-        callbackURL: "https://localhost:2303/auth/facebook/callback",
+        callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback",
         passReqToCallback: true,
         profileFields: ["email", "gender", "displayName"]
     }, async (req, accessToken, refreshToken, profile, done) => {
