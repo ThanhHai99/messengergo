@@ -50,24 +50,10 @@ let initPassportFacebook = () => {
         done(null, user._id);
     });
 
-    passport.deserializeUser(async (id, done) => {
-        try {
-            let user = await UserModel.findUserByIdForSessionToUse(id);
-            let getChatGroupIds = await ChatGroupModel.getChatGroupIdsByUser(user._id);
-      
-            user = user.toObject();
-            user.chatGroupIds = getChatGroupIds;
-            return done(null, user);
-          } catch (error) {
-            return done(error, null);
-          }
-    });
+    
     */
 
     passport.use(new passportFacebook({
-        // clientID: "498842094127366",
-        // clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
-        // callbackURL: "https://localhost:3000/auth/facebook/callback"
         clientID: "498842094127366",
         clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
         callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback"
@@ -83,10 +69,22 @@ let initPassportFacebook = () => {
         return;
     })
 
-    passport.deserializeUser((id, done) => {  
-        console.log('ok');
-        return;
-    })
+    // passport.deserializeUser((id, done) => {  
+    //     console.log('ok');
+    //     return;
+    // })
+    passport.deserializeUser(async (id, done) => {
+        try {
+            let user = await UserModel.findUserByIdForSessionToUse(id);
+            let getChatGroupIds = await ChatGroupModel.getChatGroupIdsByUser(user._id);
+      
+            user = user.toObject();
+            user.chatGroupIds = getChatGroupIds;
+            return done(null, user);
+          } catch (error) {
+            return done(error, null);
+          }
+    });
 
 };
 
