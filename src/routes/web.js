@@ -41,7 +41,7 @@ let configRoutes = (app) => {
 
 	router.get("/auth/facebook",
 		auth.checkLoggedOut,
-		passport.authenticate("facebook"));
+		passport.authenticate("facebook", {scope:["email"]}));
 
 	router.get("/auth/facebook/callback",
 		auth.checkLoggedOut,
