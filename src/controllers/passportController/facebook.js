@@ -14,24 +14,6 @@ let fbAppCallbackUrl = process.env.FB_APP_CALLBACK_URL;
  * Valid user account type local
  */
 let initPassportFacebook = () => {
-    /*
-    
-    
-
-    
-    */
-
-    // passport.use(new passportFacebook({
-    //     clientID: "498842094127366",
-    //     clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
-    //     callbackURL: "https://messengergo.herokuapp.com/auth/facebook/callback"
-        
-    // }, 
-    // (accessToken, refreshToken, profile, done) => {
-    //     console.log(profile);
-    // }
-    // ))
-
     passport.use(new FacebookStratery({
         clientID: "498842094127366",
         clientSecret: "b3b8079e7a054889099f00ec7a4c36da",
