@@ -1,5 +1,5 @@
 /**
- * Created by https://trungquandev.com's author on 25/02/2018.
+ * Created by https://fb.com/tranvietthanhhai's author on 25/02/2018.
  */
 
 const socket = io();

@@ -1,8 +1,8 @@
 {
-  "name": "awesome-chat",
-  "homepage": "https://trungquandev.com",
+  "name": "Messenger-Go",
+  "homepage": "https://fb.com/tranvietthanhhai",
   "authors": [
-    "trungquan17 <quanlightning17@gmail.com>"
+    "ThanhHai99 <haitran23031999@gmail.com>"
   ],
   "description": "Manage frontend libraries.",
   "main": "src/server.js",
@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bower_components": "https://github.com/trungquan17/awesome-chat-third-party-libraries.git",
-    "emojione": "4.5.0"
+    "bower_components": "https://github.com/ThanhHai99/ThirdPartyLibrary.git"
   }
 }
