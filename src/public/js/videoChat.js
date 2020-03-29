@@ -22,7 +22,6 @@ $(document).ready(function() {
   let getPeerId = "";
   const peer = new Peer();
   peer.on("open", function(peerId){
-    console.log(peerId);
     getPeerId = peerId;
   });
   // Step 03: Of listener
