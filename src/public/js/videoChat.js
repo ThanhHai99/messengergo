@@ -39,7 +39,7 @@ $(document).ready(function() {
     socket.emit("listener-emit-peer-id-to-server", dataToEmit);
   });
 
-  // Step 5 of caller
+  // Step 05 of caller
   socket.on("server-send-peer-id-of-listener-to-caller", function(response) {
     let dataToEmit = {
       callerId: response.callerId,
@@ -49,7 +49,7 @@ $(document).ready(function() {
       listenerPeerId: response.listenerPeerId
     };
 
-    // Step 6 of caller
+    // Step 06 of caller
     socket.emit("caller-request-call-to-server", dataToEmit);
 
     let timerInterval;
@@ -71,13 +71,38 @@ $(document).ready(function() {
           Swal.close();
           clearInterval(timerInterval);
 
-          // Step 7 of caller
-          socket.on("caller-cancel-request-call-to-server", dataToEmit);
+          // Step 07 of caller
+          socket.emit("caller-cancel-request-call-to-server", dataToEmit);
         });
         Swal.showLoading();
         timerInterval = setInterval(() => {
           Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
         }, 1000);
+      },
+      onOpen: () => {
+        // Step 12 of caller
+        socket.on("server-send-reject-call-to-caller", function(response) {
+          Swal.close();
+          clearInterval(timerInterval);
+
+          Swal.fire({
+            type: "info",
+            title: `<span style="color: #2ECC71;">${response.listenerName}</span> &nbsp; hiện tại không thể nghe máy.`,
+            backdrop: "rgba(85, 85, 85, 0.4)",
+            width: "52rem",
+            allowOutsideClick: false,
+            confirmButtonColor: "#2ECC71",
+            confirmButtonText: "Xác nhận"
+          });
+        });
+
+        // Step 13 of caller
+        socket.on("server-send-accept-call-to-caller", function(response) {
+          Swal.close();
+          clearInterval(timerInterval);
+          console.log("Caller OK");
+          //...........................//
+        });
       },
       onClose: () => {
         clearInterval(timerInterval);
@@ -89,7 +114,7 @@ $(document).ready(function() {
   });
   
   // Step 8 of listener
-  socket.on("server-send-request-call-to-listener", function() {
+  socket.on("server-send-request-call-to-listener", function(response) {
     let dataToEmit = {
       callerId: response.callerId,
       listenerId: response.listenerId,
@@ -97,6 +122,75 @@ $(document).ready(function() {
       listenerName: response.listenerName,
       listenerPeerId: response.listenerPeerId
     };
-    //1.03.000
+
+    let timerInterval;
+    Swal.fire({
+      title: `<span style="color: #2ECC71;">${response.callerName}</span> &nbsp; muốn trò chuyện video với bạn <i class="fa fa-volume-control-phone"></i>`,
+      html: `
+        Thời gian <strong style="color: #2ECC71;"></strong> giây. <br/> <br/>
+        <button id="btn-reject-call" class="btn btn-danger">
+          Từ chối
+        </button>
+        <button id="btn-accept-call" class="btn btn-success">
+          Đồng ý
+        </button>
+      `,
+      // showConfirmButton: false,
+      backdrop: "rgba(85, 85, 85, 0.4)",
+      width: "52rem",
+      allowOutsideClick: false,
+      timer: 30000,
+      onBeforeOpen: () => {
+        $("#btn-reject-call").unbind("click").on("click", function() {
+          Swal.close();
+          clearInterval(timerInterval);
+          
+          // Step 10 of listener
+          socket.emit("listener-reject-request-call-to-server", dataToEmit);
+        });
+        
+        Swal.showLoading();
+        timerInterval = setInterval(() => {
+          if (Swal.getContent() != null)
+            Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
+        }, 1000);
+        
+        $("#btn-accept-call").unbind("click").on("click", function() {
+          Swal.close();
+          clearInterval(timerInterval);
+          
+          // Step 11 of listener
+          socket.emit("listener-accept-request-call-to-server", dataToEmit);
+        });
+        Swal.showLoading();
+        timerInterval = setInterval(() => {
+          Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
+        }, 1000);
+        
+      },
+      onOpen: () => {
+        // Step 09 of listener
+        socket.on("server-send-cancel -request-call-to-listener", function(response) {
+          Swal.close();
+          clearInterval(timerInterval);
+        });
+
+        // Step 14 of listener
+        socket.on("server-send-accept-call-to-listener", function(response) {
+          Swal.close();
+          clearInterval(timerInterval);
+          console.log("Listener OK");
+          //...........................//
+        });
+
+      },
+      onClose: () => {
+        clearInterval(timerInterval);
+      } 
+    }).then((result) => {
+      return false;
+	  });
   });
+
+
 });

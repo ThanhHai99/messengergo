@@ -66,6 +66,40 @@ let chatVideo = (io) => {
         emitNotifyToArray(clients, data.listenerId, io, "server-send-cancel-request-call-to-listener", response);
       }
     });
+    
+    socket.on("listener-reject-request-call-to-server", (data) => {
+      let response = {
+        callerId: data.callerId,
+        listenerId: data.listenerId,
+        callerName: data.callerName,
+        listenerName: data.listenerName,
+        listenerPeerId: data.listenerPeerId
+      };
+      
+      if (clients[data.callerId]) {
+        emitNotifyToArray(clients, data.callerId, io, "server-send-reject-call-to-caller", response);
+      }
+    });
+
+    socket.on("listener-accept-request-call-to-server", (data) => {
+      let response = {
+        callerId: data.callerId,
+        listenerId: data.listenerId,
+        callerName: data.callerName,
+        listenerName: data.listenerName,
+        listenerPeerId: data.listenerPeerId
+      };
+      
+      if (clients[data.callerId]) {
+        emitNotifyToArray(clients, data.callerId, io, "server-send-accept-call-to-caller", response);
+      }
+      if (clients[data.listenerId]) {
+        emitNotifyToArray(clients, data.listenerId, io, "server-send-accept-call-to-listener", response);
+      }
+    });
+
+    
+    
 
     socket.on("disconnect", () => {
       clients = removeSocketIdFromArray(clients, socket.request.user._id, socket);
