@@ -31,12 +31,15 @@ $(document).ready(function() {
     alertify.notify("Người dùng này hiện không trực tuyến.", "error", 7);
   });
 
+  let iceServerList = $("#ice-server-list").val();
+
   let getPeerId = "";
   const peer = new Peer({
     key: "peerjs",
     host: "https://peerjs-server-messengergo.herokuapp.com",
     secure: true,
-    port: 443
+    port: 443,
+    config: {"iceServers": JSON.parse(iceServerList)}
   });
   peer.on("open", function(peerId){
     getPeerId = peerId;
@@ -92,7 +95,7 @@ $(document).ready(function() {
           socket.emit("caller-cancel-request-call-to-server", dataToEmit);
         });
 
-        if (Swal.getContent().querySelector !== null) {
+        if (Swal.getContent() != null) {
           Swal.showLoading();
           timerInterval = setInterval(() => {
             Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
@@ -160,12 +163,14 @@ $(document).ready(function() {
           socket.emit("listener-reject-request-call-to-server", dataToEmit);
         });
         
-        if (Swal.getContent().querySelector !== null) {
+        console.log(Swal.getContent().querySelector);
+        if (Swal.getContent() != null) {
           Swal.showLoading();
           timerInterval = setInterval(() => {
             Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
           }, 1000);
         }
+        console.log(Swal.getContent().querySelector);
         
         $("#btn-accept-call").unbind("click").on("click", function() {
           Swal.close();
@@ -175,7 +180,7 @@ $(document).ready(function() {
           socket.emit("listener-accept-request-call-to-server", dataToEmit);
         });
 
-        if (Swal.getContent().querySelector !== null) {
+        if (Swal.getContent() != null) {
           Swal.showLoading();
           timerInterval = setInterval(() => {
             Swal.getContent().querySelector("strong").textContent = Math.ceil( Swal.getTimerLeft() / 1000 );
@@ -185,7 +190,7 @@ $(document).ready(function() {
       },
       onOpen: () => {
         // Step 09 of listener
-        socket.on("server-send-cancel -request-call-to-listener", function(response) {
+        socket.on("server-send-cancel-request-call-to-listener", function(response) {
           Swal.close();
           clearInterval(timerInterval);
         });
